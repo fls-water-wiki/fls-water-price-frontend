@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { baseURL } from './baseURL';
 
 export const createSuggestion = (waterSourceName) => {
     return {
@@ -9,7 +10,7 @@ export const createSuggestion = (waterSourceName) => {
 export const sendSuggestion = async (query) => {
     const result = await axios({
         method: 'post',
-        url: "http://localhost:5000/api/v1/suggestion",
+        url: `${baseURL}//suggestion`,
         data: query
     });
 
