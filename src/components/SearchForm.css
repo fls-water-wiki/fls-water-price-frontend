@@ -1,0 +1,18 @@
+.search-form-container {
+    height: 300px;
+
+}
+
+.form {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    width: 5em;
+}

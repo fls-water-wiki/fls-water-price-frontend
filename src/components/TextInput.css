@@ -1,0 +1,10 @@
+.input-container {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+.label {
+    padding: 0.5em;
+    width: 200px
+}

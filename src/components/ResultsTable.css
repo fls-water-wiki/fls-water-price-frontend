@@ -1,0 +1,28 @@
+.results-table-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.page-number-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.results-table {
+    width: 60em;
+}
+.results-table-header-row {
+    
+}
+.results-table-header-item {
+    
+}
+.results-table-data-row {
+    
+}
+
+.results-table-data-item {
+    
+}
