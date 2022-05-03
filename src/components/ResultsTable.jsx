@@ -37,7 +37,7 @@ function ResultsTable({ results }) {
                   const resultFields = [
                     result.vp_id,
                     result.vp_water_treatment, 
-                    result.vp_water_treatment, 
+                    result.vp_water_unit, 
                     result.vp_num, 
                     result.vp_date,
                     result.currency_id, 
