@@ -15,6 +15,18 @@ function SearchForm({ setResults }) {
   const [company, setCompany] = useState("");
   const [currency, setCurrency] = useState("");
 
+
+  const reset = () => {
+    setCountry("");
+    setRegion("");
+    setYear("");
+    setWaterTreatment("");
+    setPriceMin("");
+    setPriceMax("");
+    setCountry("");
+    setCompany("");
+  }
+
   const sub = async (e) => {
     console.log(priceMin);
     e.preventDefault();
@@ -30,7 +42,6 @@ function SearchForm({ setResults }) {
           "currency_id": currency
         })
       const rows = res.data.data.rows;
-      // console.log(rows);
       setResults(rows);
     }  catch (err) {
       console.log(err);
@@ -39,6 +50,10 @@ function SearchForm({ setResults }) {
    
   return (
     <div className="search-form-container">
+
+      <div className="form-header">
+        <p className="form-header-text">Search Criteria</p>
+      </div>
       <form className="form" onSubmit={sub}>
           <div className="column">
             <TextInput label="Country ID"          id="country"        value={country}         onChange={setCountry}/>
@@ -55,7 +70,7 @@ function SearchForm({ setResults }) {
             <TextInput label="Price max"        id="priceMax"       value={priceMax}        onChange={setPriceMax} />
             <TextInput label="Company"          id="company"        value={company}         onChange={setCompany} />
             <TextInput label="Currency"         id="currency"       value={currency}        onChange={setCurrency} />
-            <button type="reset" className="btn">Reset</button>
+            <button type="reset" className="btn" onClick={reset}>Reset</button>
           </div>
 
       </form>
