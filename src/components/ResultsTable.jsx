@@ -53,7 +53,7 @@ function ResultsTable({ results }) {
                     }
                     {/* separate due to different formatting */}
                     <td className="results-table-data-item">
-                      <a href={result.source_uri}>Source</a>
+                      <a href={result.source_uri}>{result.src_title}</a>
                     </td>
                   </tr>
                 )
