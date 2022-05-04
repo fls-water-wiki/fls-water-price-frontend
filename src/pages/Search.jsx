@@ -8,11 +8,11 @@ function Search() {
   const [results, setResults] = useState([]);
 
   return (
-    <div className="search">
+    <div className="search-container">
       <div className="main-card">
         <SearchForm setResults={setResults}/>
-        <ResultsTable results={results}/>
-      </div>
+       </div>
+      <ResultsTable results={results}/>
     </div>
   )
 }

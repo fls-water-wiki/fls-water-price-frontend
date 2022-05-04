@@ -1,13 +1,14 @@
 .search-form-container {
     /* margin-top: 2em; */
     height: 20em;
+    padding-bottom: 1em;
 
 }
 
 .form-header {
     height: 4em;
     width: 100%;
-    background-color: #00A9D4;
+    background-color: var(--blue);
     color: white;
     text-align: center;
 }
@@ -26,7 +27,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    margin: 2em 3em 0 3em;
+    margin: 2em 1em 0em 1em;
 
 }
 
@@ -40,13 +41,13 @@
     width: 10em;
     height: 3em;
     background-color: white;
-    color: #00A9D4;
-    border: 1px solid #00A9D4;
+    color: var(--blue);
+    border: 1px solid var(--blue);
     border-radius:0;
 }
 
 .btn:hover {
-    background-color: #00A9D4;
+    background-color: var(--blue);
     color: white;
     cursor: pointer;
 }
