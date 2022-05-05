@@ -11,9 +11,15 @@ import { Pagination } from '@mui/material';
 function ResultsTable({ results }) {
 
   const [pageNumber, setPageNumber] = useState(1);
+  const [tableLength, setTableLength] = useState(10);
 
   const handlePageNumberChange = (e, value) => {
     setPageNumber(value);
+  }
+
+  const handleTableLengthChange = (e) => {
+    setTableLength(e.target.value);
+    setPageNumber(1);
   }
 
   const fields = ["ID", "Water Treatment", "Water Unit", "Price", "Year", "Currency", "Country ID", "Source URI"];
@@ -21,7 +27,9 @@ function ResultsTable({ results }) {
   return (
     <div className="results-table-container">
 
-      {(results.length > 0 && (pageNumber - 1) * 10 < results.length)
+
+
+      {(results.length > 0 && (pageNumber - 1) * tableLength < results.length)
        && 
 
 
@@ -35,7 +43,7 @@ function ResultsTable({ results }) {
 
               </tr>
               {
-              results.slice(10*(pageNumber - 1), Math.min(10*pageNumber, results.length)).map(result => {
+              results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map(result => {
 
                   const resultFields = [
                     result.vp_id,
@@ -72,7 +80,24 @@ function ResultsTable({ results }) {
         //     of {Math.round(results.length / 10)} 
         //   </p>
         // </div>
-        <Pagination className="page-number-selector" count={Math.ceil(results.length / 10)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
+        <div className="page-number-container">
+          <div className="num-results-rows-per-page-container">
+            <div className='number-of-results'>
+              Showing {(pageNumber - 1) * tableLength + 1} - {Math.min(pageNumber * tableLength, results.length)} of {results.length} results
+            </div>
+            <div className="rows-per-page">
+              <label for="rows-per-page">Show </label>
+              <select name="rows-per-page" id="rows-per-page" className="rows-per-page-selector" onChange={handleTableLengthChange}>
+                <option value={10}>10</option>
+                <option value={25}>25</option>
+                <option value={50}>50</option>
+                <option value={100}>100</option>
+              </select>
+              <label for="rows-per-page">rows per page</label> 
+            </div>
+          </div>
+          <Pagination className="page-number-selector" count={Math.ceil(results.length / tableLength)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
+        </div>
 
       }
     </div>
