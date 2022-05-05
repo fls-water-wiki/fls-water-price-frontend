@@ -2,8 +2,6 @@ import React, {useState} from 'react'
 
 import './ResultsTable.css';
 
-import TextInput from './TextInput';
-
 import { Pagination } from '@mui/material';
 
 function ResultsTable({ results }) {

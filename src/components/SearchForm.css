@@ -23,7 +23,7 @@
 
 .form {
     display: flex;
-    font-size: 18px;
+    font-size: 14px;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -45,6 +45,7 @@
     border: 1px solid var(--blue);
     border-radius:0;
 }
+
 
 .btn:hover {
     background-color: var(--blue);

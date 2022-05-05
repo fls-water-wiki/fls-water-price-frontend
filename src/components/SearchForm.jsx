@@ -56,20 +56,20 @@ function SearchForm({ setResults }) {
       </div>
       <form className="form" onSubmit={sub}>
           <div className="column">
-            <TextInput label="Country ID"          id="country"        value={country}         onChange={setCountry}/>
-            <TextInput label="Region"              id="region"         value={region}          onChange={setRegion}/>
-            <TextInput label="Year"                id="year"           value={year}            onChange={setYear}/>
-            <TextInput label="Water treatment"     id="waterTreatment" value={waterTreatment}  onChange={setWaterTreatment}/>
+            <TextInput className="form-input" label="Country ID"          id="country"        value={country}         onChange={setCountry}/>
+            <TextInput className="form-input" label="Region"              id="region"         value={region}          onChange={setRegion}/>
+            <TextInput className="form-input" label="Year"                id="year"           value={year}            onChange={setYear}/>
+            <TextInput className="form-input" label="Water treatment"     id="waterTreatment" value={waterTreatment}  onChange={setWaterTreatment}/>
             <button type="submit" className="btn">Submit</button>
 
           </div>
 
           
           <div className="column">
-            <TextInput label="Price min"        id="priceMin"       value={priceMin}        onChange={setPriceMin} />
-            <TextInput label="Price max"        id="priceMax"       value={priceMax}        onChange={setPriceMax} />
-            <TextInput label="Company"          id="company"        value={company}         onChange={setCompany} />
-            <TextInput label="Currency"         id="currency"       value={currency}        onChange={setCurrency} />
+            <TextInput className="form-input" label="Price min"        id="priceMin"       value={priceMin}        onChange={setPriceMin} />
+            <TextInput className="form-input" label="Price max"        id="priceMax"       value={priceMax}        onChange={setPriceMax} />
+            <TextInput className="form-input" label="Company"          id="company"        value={company}         onChange={setCompany} />
+            <TextInput className="form-input" label="Currency"         id="currency"       value={currency}        onChange={setCurrency} />
             <button type="reset" className="btn" onClick={reset}>Reset</button>
           </div>
 
