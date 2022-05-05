@@ -3,14 +3,17 @@ import React, {useState} from 'react'
 import './ResultsTable.css';
 
 import TextInput from './TextInput';
-import PageNumberForm from './PageNumberForm';
+import PageNumberSelector from './PageNumberSelector';
+
+
+import { Pagination } from '@mui/material';
 
 function ResultsTable({ results }) {
 
   const [pageNumber, setPageNumber] = useState(1);
 
-  const handlePageNumberChange = (e) => {
-    setPageNumber(parseInt(e.target.value));
+  const handlePageNumberChange = (e, value) => {
+    setPageNumber(value);
   }
 
   const fields = ["ID", "Water Treatment", "Water Unit", "Price", "Date", "Currency", "Country ID", "Source URI"];
@@ -38,7 +41,7 @@ function ResultsTable({ results }) {
                     result.vp_id,
                     result.vp_water_treatment, 
                     result.vp_water_unit, 
-                    result.vp_num, 
+                   +result.vp_num.toFixed(2), 
                     result.vp_date,
                     result.currency_id, 
                     result.nation_id
@@ -61,12 +64,17 @@ function ResultsTable({ results }) {
           </table>
       }
 
-      <div className="page-number-container">
-        <PageNumberForm onSubmit={setPageNumber}/>
-        <p> 
-          of {Math.round(results.length / 10)} 
-        </p>
-      </div>
+      {
+        (results.length > 0) && 
+        // <div className="page-number-container">
+        //   <PageNumberSelector onSubmit={setPageNumber}/>
+        //   <p> 
+        //     of {Math.round(results.length / 10)} 
+        //   </p>
+        // </div>
+        <Pagination className="page-number-selector" count={Math.ceil(results.length / 10)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
+
+      }
     </div>
   )
 }
