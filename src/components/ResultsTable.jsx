@@ -3,8 +3,6 @@ import React, {useState} from 'react'
 import './ResultsTable.css';
 
 import TextInput from './TextInput';
-import PageNumberSelector from './PageNumberSelector';
-
 
 import { Pagination } from '@mui/material';
 
@@ -26,8 +24,6 @@ function ResultsTable({ results }) {
   // country and source
   return (
     <div className="results-table-container">
-
-
 
       {(results.length > 0 && (pageNumber - 1) * tableLength < results.length)
        && 
@@ -74,12 +70,7 @@ function ResultsTable({ results }) {
 
       {
         (results.length > 0) && 
-        // <div className="page-number-container">
-        //   <PageNumberSelector onSubmit={setPageNumber}/>
-        //   <p> 
-        //     of {Math.round(results.length / 10)} 
-        //   </p>
-        // </div>
+
         <div className="page-number-container">
           <div className="num-results-rows-per-page-container">
             <div className='number-of-results'>
