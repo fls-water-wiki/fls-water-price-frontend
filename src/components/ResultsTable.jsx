@@ -16,7 +16,7 @@ function ResultsTable({ results }) {
     setPageNumber(value);
   }
 
-  const fields = ["ID", "Water Treatment", "Water Unit", "Price", "Date", "Currency", "Country ID", "Source URI"];
+  const fields = ["ID", "Water Treatment", "Water Unit", "Price", "Year", "Currency", "Country ID", "Source URI"];
   // country and source
   return (
     <div className="results-table-container">
