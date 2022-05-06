@@ -1,0 +1,36 @@
+.home {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.description {
+    margin-top: 3em;
+    width: 75%
+}
+
+.link-cards-container {
+    margin-top: 2em;
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+}
+
+.link-card {
+    height: 3em;
+    width: 16em;
+    color: var(--blue);
+    background-color: white;
+    text-align: center;
+    padding-top: 1em;
+    border: 1px solid var(--blue);
+    border-radius: 15px;
+    font-size: 20px;
+    text-decoration: none;
+}
+
+.link-card:hover {
+    color: white;
+    background-color: var(--blue);
+}
