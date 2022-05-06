@@ -4,6 +4,7 @@ import './SearchForm.css';
 import TextInput from './TextInput';
 
 import { performQuery } from '../utils/api/query'
+import { getAllData } from '../utils/api/getData'
 
 function SearchForm({ setResults }) {
   const [country, setCountry] = useState("");
@@ -47,10 +48,21 @@ function SearchForm({ setResults }) {
       console.log(err);
     }
   }
-   
+  
+  const getAllData = async (e) => {
+    try {
+      await getAllData();
+    } catch (err) {
+      console.log.error(err);
+    }
+  }
+
   return (
     <div className="search-form-container">
 
+      {/* <div onClick={getAllData}>
+        Download input
+      </div> */}
       <div className="form-header">
         <p className="form-header-text">Search Criteria</p>
       </div>

@@ -32,8 +32,9 @@
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    /* flex-direction: column; */
+    width: 50%
 }
 
 .btn {

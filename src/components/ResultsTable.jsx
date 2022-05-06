@@ -18,7 +18,7 @@ function ResultsTable({ results }) {
     setPageNumber(1);
   }
 
-  const fields = ["ID", "Water Treatment", "Water Unit", "Price", "Year", "Currency", "Country ID", "Source URI"];
+  const fields = ["ID", "Water Treatment", "Water Unit", "Price",  "Currency", "Year", "Country ID", "Source URI"];
   // country and source
   return (
     <div className="results-table-container">
@@ -44,8 +44,8 @@ function ResultsTable({ results }) {
                     result.vp_water_treatment, 
                     result.vp_water_unit, 
                    +result.vp_num.toFixed(2), 
-                    result.vp_date,
                     result.currency_id, 
+                    result.vp_date,
                     result.nation_id
                   ]
                   

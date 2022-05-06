@@ -4,7 +4,7 @@ import './Add.css';
 
 function Add() {
   return (
-    <div>Add</div>
+    <div>Under construction</div>
   )
 }
 

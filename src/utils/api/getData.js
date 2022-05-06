@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { baseURL } from './baseURL';
 
-export const performQuery = async () => {
+export const getAllData = async () => {
     const result = await axios({
         method: 'get',
         url: `${baseURL}/data`,
