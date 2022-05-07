@@ -3,8 +3,24 @@ import React, {useState} from 'react'
 import './ResultsTable.css';
 
 import { Pagination } from '@mui/material';
+import { CSVLink } from 'react-csv';
+
 
 function ResultsTable({ results }) {
+
+  const csvHeaders = [
+    {label: "ID", key: "vp_id"},
+    {label: "Water Treatment", key: "vp_water_treatment"},
+    {label: "Water Unit", key: "vp_water_unit"},
+    {label: "Price", key: "vp_num"},
+    {label: "Currency", key: "currency_id"},
+    {label: "Year", key: "vp_date"},
+    {label: "Country ID", key: "nation_id"},
+    {label: "Source Title", key: "src_title"},
+    {label: "Source URI", key: "source_uri"},
+
+
+  ];
 
   const [pageNumber, setPageNumber] = useState(1);
   const [tableLength, setTableLength] = useState(10);
@@ -22,6 +38,7 @@ function ResultsTable({ results }) {
   // country and source
   return (
     <div className="results-table-container">
+
 
       {(results.length > 0 && (pageNumber - 1) * tableLength < results.length)
        && 
@@ -68,24 +85,37 @@ function ResultsTable({ results }) {
 
       {
         (results.length > 0) && 
+        <div className="table-bottom-content">
 
-        <div className="page-number-container">
-          <div className="num-results-rows-per-page-container">
-            <div className='number-of-results'>
-              Showing {(pageNumber - 1) * tableLength + 1} - {Math.min(pageNumber * tableLength, results.length)} of {results.length} results
+          <div className="page-number-container">
+            <div className="num-results-rows-per-page-container">
+              <div className='number-of-results'>
+                Showing {(pageNumber - 1) * tableLength + 1} - {Math.min(pageNumber * tableLength, results.length)} of {results.length} results
+              </div>
+              <div className="rows-per-page">
+                <label for="rows-per-page">Show </label>
+                <select name="rows-per-page" id="rows-per-page" className="rows-per-page-selector" onChange={handleTableLengthChange}>
+                  <option value={10}>10</option>
+                  <option value={25}>25</option>
+                  <option value={50}>50</option>
+                  <option value={100}>100</option>
+                </select>
+                <label for="rows-per-page">rows per page</label> 
+              </div>
             </div>
-            <div className="rows-per-page">
-              <label for="rows-per-page">Show </label>
-              <select name="rows-per-page" id="rows-per-page" className="rows-per-page-selector" onChange={handleTableLengthChange}>
-                <option value={10}>10</option>
-                <option value={25}>25</option>
-                <option value={50}>50</option>
-                <option value={100}>100</option>
-              </select>
-              <label for="rows-per-page">rows per page</label> 
-            </div>
+            <Pagination className="page-number-selector" count={Math.ceil(results.length / tableLength)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
           </div>
-          <Pagination className="page-number-selector" count={Math.ceil(results.length / tableLength)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
+
+          
+          <CSVLink
+            className="csv-link"
+            data={results}
+            headers={csvHeaders}
+            filename={"results.csv"}
+            target="_blank"
+          >
+            Download CSV of results
+          </CSVLink>
         </div>
 
       }

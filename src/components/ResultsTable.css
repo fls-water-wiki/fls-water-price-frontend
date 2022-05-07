@@ -43,17 +43,7 @@
     /* border-radius: 5px; */
 }
 
-.page-number-container {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
 
-.page-number-selector {
-    padding: 1em 0 1em 0;
-}
 
 .results-table-header-row {
     background-color: var(--blue);
@@ -76,4 +66,33 @@
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding:0.2em 1em 0.2em 1em;
     font-size: 12px;
+}
+
+.page-number-container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2em;
+}
+
+.page-number-selector {
+    padding: 1em 0 1em 0;
+}
+
+.table-bottom-content {
+    width: 100%;
+}
+
+.csv-link {
+    text-decoration: none;
+    color: var(--blue);
+    padding: 1em;
+    border: 1px solid var(--blue);
+}
+
+.csv-link:hover {
+    color: white;
+    background-color: var(--blue);
 }
