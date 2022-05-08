@@ -18,8 +18,6 @@ function ResultsTable({ results }) {
     {label: "Country ID", key: "nation_id"},
     {label: "Source Title", key: "src_title"},
     {label: "Source URI", key: "source_uri"},
-
-
   ];
 
   const [pageNumber, setPageNumber] = useState(1);
