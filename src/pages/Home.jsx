@@ -3,7 +3,10 @@ import './Home.css';
 
 import { Link } from 'react-router-dom';
 
+import {downloadDatabase} from '../utils/api/downloadDatabase'
+
 function Home() {
+
 
 
   return (
@@ -13,6 +16,7 @@ function Home() {
       <div className="link-cards-container">
         <Link className="link-card" to='/search'>Search the database</Link>
         <Link className="link-card" to='/add'>Add new data</Link>
+        <div className="link-card" onClick={downloadDatabase}>Download the database</div>
       </div>
     </div>
   )

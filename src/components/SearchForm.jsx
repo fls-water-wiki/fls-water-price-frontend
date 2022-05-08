@@ -4,7 +4,6 @@ import './SearchForm.css';
 import TextInput from './TextInput';
 
 import { performQuery } from '../utils/api/query'
-import { getAllData } from '../utils/api/getData'
 
 function SearchForm({ setResults }) {
   const [country, setCountry] = useState("");
