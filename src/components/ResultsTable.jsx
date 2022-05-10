@@ -22,6 +22,8 @@ function ResultsTable({ results }) {
 
   const [pageNumber, setPageNumber] = useState(1);
   const [tableLength, setTableLength] = useState(10);
+  const [sortAscending, setSortAscending] = useState(false);
+  const [sortColumn, setSortColumn] = useState("");
 
   const handlePageNumberChange = (e, value) => {
     setPageNumber(value);
@@ -30,6 +32,24 @@ function ResultsTable({ results }) {
   const handleTableLengthChange = (e) => {
     setTableLength(e.target.value);
     setPageNumber(1);
+  }
+
+
+
+  const sortBy = (column) => {
+    if (column === sortColumn) {
+      setSortAscending(!sortAscending);
+    } else {
+      setSortAscending(true);
+    }
+
+    setSortColumn(column);
+
+    if (sortAscending) {
+      results.sort((a, b) => a[column] - b[column]);
+    } else {
+      results.sort((a, b) => b[column] - a[column]);
+    }
   }
 
   const fields = ["ID", "Water Treatment", "Water Unit", "Price",  "Currency", "Year", "Country ID", "Source URI"];
@@ -45,8 +65,8 @@ function ResultsTable({ results }) {
           <table className="results-table">
               <tr className="results-table-header-row">
                 {
-                  fields.map(field =>
-                    <th className="results-table-header-item">{field}</th>
+                  csvHeaders.map(header =>
+                    <th className="results-table-header-item" key={header.key} onClick={() => sortBy(header.key)}>{header.label}</th>
                   )
                 }
 
@@ -63,6 +83,8 @@ function ResultsTable({ results }) {
                     result.vp_date,
                     result.nation_id
                   ]
+
+                console.log(result.nation_id)
                   
                 return(
                   <tr className="results-table-data-row">
