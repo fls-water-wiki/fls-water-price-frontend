@@ -5,20 +5,9 @@ import './ResultsTable.css';
 import { Pagination } from '@mui/material';
 import { CSVLink } from 'react-csv';
 
+import { csvHeaders, fields } from '../constants/constants';
 
 function ResultsTable({ results }) {
-
-  const csvHeaders = [
-    {label: "ID", key: "vp_id"},
-    {label: "Water Treatment", key: "vp_water_treatment"},
-    {label: "Water Unit", key: "vp_water_unit"},
-    {label: "Price", key: "vp_num"},
-    {label: "Currency", key: "currency_id"},
-    {label: "Year", key: "vp_date"},
-    {label: "Country ID", key: "nation_id"},
-    {label: "Source Title", key: "src_title"},
-    {label: "Source URI", key: "source_uri"},
-  ];
 
   const [pageNumber, setPageNumber] = useState(1);
   const [tableLength, setTableLength] = useState(10);
@@ -33,8 +22,6 @@ function ResultsTable({ results }) {
     setTableLength(e.target.value);
     setPageNumber(1);
   }
-
-
 
   const sortBy = (column) => {
     if (column === sortColumn) {
@@ -52,7 +39,6 @@ function ResultsTable({ results }) {
     }
   }
 
-  const fields = ["ID", "Water Treatment", "Water Unit", "Price",  "Currency", "Year", "Country ID", "Source URI"];
   // country and source
   return (
     <div className="results-table-container">

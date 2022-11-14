@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useReducer} from 'react'
 import './SearchForm.css';
 
 import TextInput from './TextInput';
@@ -6,40 +6,46 @@ import TextInput from './TextInput';
 import { performQuery } from '../utils/api/query'
 
 function SearchForm({ setResults }) {
-  const [country, setCountry] = useState("");
-  const [region, setRegion] = useState("");
-  const [year, setYear] = useState("");
-  const [waterTreatment, setWaterTreatment] = useState("");
-  const [priceMin, setPriceMin] = useState("");
-  const [priceMax, setPriceMax] = useState("");
-  const [company, setCompany] = useState("");
-  const [currency, setCurrency] = useState("");
 
+  const [searchInput, setSearchInput] = useReducer(
+    (state, newState) => ({ ...state, ...newState }),
+    {
+      country: "",
+      region: "",
+      year: "",
+      waterTreatment: "",
+      company: "",
+      currency: ""
+    }
+  )
+
+  const handleChangeFormInput = event => {
+    const { name, value } = event.target;
+    setSearchInput({ [name]: value});
+  }
 
   const reset = () => {
-    setCountry("");
-    setRegion("");
-    setYear("");
-    setWaterTreatment("");
-    setPriceMin("");
-    setPriceMax("");
-    setCountry("");
-    setCompany("");
+    setSearchInput(    
+    {
+      country: "",
+      region: "",
+      year: "",
+      waterTreatment: "",
+      company: "",
+      currency: ""
+    });
   }
 
   const sub = async (e) => {
-    console.log(priceMin);
     e.preventDefault();
     try {
       const res = await performQuery({
-          "nation_id": country.toUpperCase(),
-          "vp_date": parseInt(year),
-          "vp_water_treatment": waterTreatment,
-          "min_price": parseInt(priceMin),
-          "max_price": parseInt(priceMax),
-          "region_name": region,
-          "company_id": company,
-          "currency_id": currency
+          "nation_id": searchInput.country.toUpperCase(),
+          "vp_date": parseInt(searchInput.year),
+          "vp_water_treatment": searchInput.waterTreatment,
+          "region_name": searchInput.region,
+          "company_id": searchInput.company,
+          "currency_id": searchInput.currency
         })
       const rows = res.data.data.rows;
       setResults(rows);
@@ -59,28 +65,23 @@ function SearchForm({ setResults }) {
   return (
     <div className="search-form-container">
 
-      {/* <div onClick={getAllData}>
-        Download input
-      </div> */}
       <div className="form-header">
         <p className="form-header-text">Search Criteria</p>
       </div>
       <form className="form" onSubmit={sub}>
           <div className="column">
-            <TextInput className="form-input" label="Country ID"          id="country"        value={country}         onChange={setCountry}/>
-            <TextInput className="form-input" label="Region"              id="region"         value={region}          onChange={setRegion}/>
-            <TextInput className="form-input" label="Year"                id="year"           value={year}            onChange={setYear}/>
-            <TextInput className="form-input" label="Water treatment"     id="waterTreatment" value={waterTreatment}  onChange={setWaterTreatment}/>
+            <TextInput className="form-input" label="Country ID"          id="country"        value={searchInput.country}         onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Region"              id="region"         value={searchInput.region}          onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Year"                id="year"           value={searchInput.year}            onChange={handleChangeFormInput}/>
             <button type="submit" className="btn">Submit</button>
 
           </div>
 
           
           <div className="column">
-            <TextInput className="form-input" label="Price min"        id="priceMin"       value={priceMin}        onChange={setPriceMin} />
-            <TextInput className="form-input" label="Price max"        id="priceMax"       value={priceMax}        onChange={setPriceMax} />
-            <TextInput className="form-input" label="Company"          id="company"        value={company}         onChange={setCompany} />
-            <TextInput className="form-input" label="Currency"         id="currency"       value={currency}        onChange={setCurrency} />
+            <TextInput className="form-input" label="Water treatment"     id="waterTreatment" value={searchInput.waterTreatment}  onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Company"          id="company"        value={searchInput.company}         onChange={handleChangeFormInput} />
+            <TextInput className="form-input" label="Currency"         id="currency"       value={searchInput.currency}        onChange={handleChangeFormInput} />
             <button type="reset" className="btn" onClick={reset}>Reset</button>
           </div>
 

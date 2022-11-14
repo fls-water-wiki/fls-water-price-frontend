@@ -5,7 +5,7 @@ import './TextInput.css';
 function TextInput({ label, id, value, onChange }) {
 
     const setValue = (e) => {
-        onChange(e.target.value);
+        onChange(e);
     }
 
     return (

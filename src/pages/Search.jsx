@@ -14,7 +14,7 @@ function Search() {
        </div>
       <ResultsTable results={results}/>
     </div>
-  )
+  );
 }
 
 export default Search
