@@ -1,10 +1,11 @@
 import React from 'react'
+import SubmitDataInput from '../components/submit-data-form/SubmitDataInput';
 import './Add.css';
 
 
 function Add() {
   return (
-    <div>Under construction</div>
+    <SubmitDataInput header={"Price"} description={"price"} answer={"text"} required={true}/>
   )
 }
 

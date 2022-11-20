@@ -69,8 +69,6 @@ function ResultsTable({ results }) {
                     result.vp_date,
                     result.nation_id
                   ]
-
-                console.log(result.nation_id)
                   
                 return(
                   <tr className="results-table-data-row">
