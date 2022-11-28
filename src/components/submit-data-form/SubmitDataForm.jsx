@@ -1,11 +1,33 @@
-import React from 'react'
+import React from 'react';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+
 import SubmitDataInput from './inputs/TextNumberInput'
 
-function SubmitDataForm() {
-  return (
-    <form>
+const initialValues = {
+  price: 0,
+  currency: '',
+  date: 0,
+  waterUnit: '',
+  priceType: '',
+  userSector: '',
+  indigenousTerritory: '',
+  region: '',
+  dataSource: '',
+}
 
-    </form>
+const SubmitDataForm = () => {
+  return (
+    <Formik
+      initialValues={initialValues}
+      onSubmit={(values) => {
+
+      }}
+    >
+      <Form>
+
+      </Form>
+
+    </Formik>
   )
 }
 

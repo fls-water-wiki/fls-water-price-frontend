@@ -1,6 +1,6 @@
 import React from 'react';
 
-function SubmitDataInput({ header, description, type, required}) {
+const SubmitDataInput = ({ header, description, type, required}) => {
   return (
     <>
         <label>

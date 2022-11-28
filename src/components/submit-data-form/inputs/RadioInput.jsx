@@ -1,9 +1,22 @@
-import React from 'react'
+import React from 'react';
+import { useField } from 'formik';
 
-function RadioInput() {
+const RadioInput = ({ groupId, options, ...props}) => {
+  const [field, meta] = useField(props);
   return (
-    <div>RadioInput</div>
-  )
-}
 
-export default RadioInput
+    <fieldset id={groupId}>
+      { 
+        options.forEach(option => (
+          <>
+            <input type='radio' id={option.value} name={groupId} value={option.value} />
+            <label for={option.value}>{option.label}</label>
+          </>
+        ))
+      }
+    </fieldset>
+
+  );
+};
+
+export default RadioInput;
