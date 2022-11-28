@@ -1,20 +1,27 @@
 import React from 'react';
 import { useField } from 'formik';
 
-const RadioInput = ({ groupId, options, ...props}) => {
+const RadioInput = ({ header, description, required, groupId, options, ...props}) => {
   const [field, meta] = useField(props);
   return (
 
-    <fieldset id={groupId}>
-      { 
-        options.forEach(option => (
-          <>
-            <input type='radio' id={option.value} name={groupId} value={option.value} />
-            <label for={option.value}>{option.label}</label>
-          </>
-        ))
-      }
-    </fieldset>
+    <>
+      <label htmlFor={props.id || props.name}>
+        <h3>{header}{required && "*"}</h3>
+        <p>{description}</p>
+      </label>    
+      
+      <fieldset id={groupId}>
+        { 
+          options.forEach(option => (
+            <>
+              <input type='radio' id={option.value} name={groupId} value={option.value} />
+              <label for={option.value}>{option.label}</label>
+            </>
+          ))
+        }
+      </fieldset>
+    </>
 
   );
 };
