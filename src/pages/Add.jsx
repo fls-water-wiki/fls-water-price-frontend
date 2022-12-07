@@ -1,12 +1,12 @@
-import React from 'react'
-import SubmitDataInput from '../components/submit-data-form/SubmitDataInput';
+import React from 'react';
+import SubmitDataForm from '../components/submit-data-form/SubmitDataForm';
 import './Add.css';
 
 
 function Add() {
   return (
-    <SubmitDataInput header={"Price"} description={"price"} answer={"text"} required={true}/>
-  )
-}
+    <SubmitDataForm />
+  );
+};
 
-export default Add
+export default Add;
