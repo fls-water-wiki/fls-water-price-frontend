@@ -4,6 +4,8 @@ import './Search.css';
 import ResultsTable from '../components/ResultsTable';
 import SearchForm from '../components/SearchForm';
 
+import { data } from '../mock-data/data';
+
 function Search() {
   const [results, setResults] = useState([]);
 

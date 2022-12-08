@@ -12,10 +12,10 @@ function SearchForm({ setResults }) {
     {
       country: "",
       region: "",
-      year: "",
+      earliestYear: "",
+      lastestYear: "",
       waterTreatment: "",
-      company: "",
-      currency: ""
+      userSector: "",
     }
   )
 
@@ -26,14 +26,14 @@ function SearchForm({ setResults }) {
 
   const reset = () => {
     setSearchInput(    
-    {
-      country: "",
-      region: "",
-      year: "",
-      waterTreatment: "",
-      company: "",
-      currency: ""
-    });
+      {
+        country: "",
+        region: "",
+        earliestYear: "",
+        lastestYear: "",
+        waterTreatment: "",
+        userSector: "",
+      });
   }
 
   const sub = async (e) => {
@@ -70,19 +70,16 @@ function SearchForm({ setResults }) {
       </div>
       <form className="form" onSubmit={sub}>
           <div className="column">
-            <TextInput className="form-input" label="Country ID"          id="country"        value={searchInput.country}         onChange={handleChangeFormInput}/>
-            <TextInput className="form-input" label="Region"              id="region"         value={searchInput.region}          onChange={handleChangeFormInput}/>
-            <TextInput className="form-input" label="Year"                id="year"           value={searchInput.year}            onChange={handleChangeFormInput}/>
-            <button type="submit" className="btn">Submit</button>
-
-          </div>
-
-          
-          <div className="column">
-            <TextInput className="form-input" label="Water treatment"     id="waterTreatment" value={searchInput.waterTreatment}  onChange={handleChangeFormInput}/>
-            <TextInput className="form-input" label="Company"          id="company"        value={searchInput.company}         onChange={handleChangeFormInput} />
-            <TextInput className="form-input" label="Currency"         id="currency"       value={searchInput.currency}        onChange={handleChangeFormInput} />
-            <button type="reset" className="btn" onClick={reset}>Reset</button>
+            <TextInput className="form-input" label="Country"           id="country"        value={searchInput.country}         onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Region"            id="region"         value={searchInput.region}          onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Earliest Year"     id="year"           value={searchInput.earliestYear}            onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Latest Year"       id="year"           value={searchInput.latestYear}            onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="User Sector"       id="userSector"     value={searchInput.userSector}      onChange={handleChangeFormInput}/>
+            <TextInput className="form-input" label="Water Treatment"   id="waterTreatment" value={searchInput.waterTreatment}  onChange={handleChangeFormInput}/>
+            <div>
+              <button type="submit" className="btn">Submit</button>
+              <button type="reset" className="btn" onClick={reset}>Reset</button>
+            </div>
           </div>
 
       </form>

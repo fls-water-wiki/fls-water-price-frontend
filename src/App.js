@@ -21,6 +21,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/fls-water-wiki-frontend" element={<Home />} />
         <Route path="/search" element={<Search />} />
         <Route path="/add" element={<Add />} />
       </Routes>

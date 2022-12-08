@@ -61,7 +61,7 @@ function ResultsTable({ results }) {
               results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map(result => {
 
                   const resultFields = [
-                    result.vp_id,
+                    // result.vp_id,
                     result.vp_water_treatment, 
                     result.vp_water_unit, 
                    +result.vp_num.toFixed(2), 
