@@ -5,7 +5,9 @@ import './Add.css';
 
 function Add() {
   return (
-    <SubmitDataForm />
+    <div className='submit-data-form-container'>
+      <SubmitDataForm className='submit-data-form'/>
+    </div>
   );
 };
 

@@ -1,6 +1,8 @@
 import React from 'react';
 import { useField } from 'formik';
 
+import './NumberInput.css';
+
 const NumberInput = ({header, description, required, ...props}) => {
   const [field, meta] = useField(props);
 
@@ -10,7 +12,7 @@ const NumberInput = ({header, description, required, ...props}) => {
               <h3>{header}{required && "*"}</h3>
               <p>{description}</p>
           </label>
-          <input type='number' className='number-input' {...field} {...props} />
+          <input type='text' className='number-input-box' {...field} {...props} />
       </>
   );
 };

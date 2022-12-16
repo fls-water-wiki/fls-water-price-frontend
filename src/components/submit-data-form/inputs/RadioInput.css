@@ -1,0 +1,9 @@
+.radio-options {
+  display: flex;
+  flex-direction: column;
+  border: 0 none;
+}
+
+.option {
+  padding-top: 0.5em;
+}

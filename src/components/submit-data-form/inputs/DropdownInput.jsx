@@ -1,6 +1,8 @@
 import React from 'react';
 import { useField } from 'formik';
 
+import './DropdownInput.css';
+
 const DropdownInput = ({ header, description, required, ...props}) => {
   const [field, meta] = useField(props);
   
@@ -10,7 +12,7 @@ const DropdownInput = ({ header, description, required, ...props}) => {
         <h3>{header}{required && "*"}</h3>
         <p>{description}</p>
       </label>
-      <select {...field} {...props} />
+      <select className='dropdown-select' {...field} {...props} />
     </>
   );
 };
