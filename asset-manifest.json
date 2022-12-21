@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/fls-water-price-frontend/static/css/main.e9ea82a1.css",
-    "main.js": "/fls-water-price-frontend/static/js/main.f1338e84.js",
+    "main.css": "/fls-water-price-frontend/static/css/main.cdbadfeb.css",
+    "main.js": "/fls-water-price-frontend/static/js/main.6f96362d.js",
     "static/js/787.0ce44172.chunk.js": "/fls-water-price-frontend/static/js/787.0ce44172.chunk.js",
     "index.html": "/fls-water-price-frontend/index.html",
-    "main.e9ea82a1.css.map": "/fls-water-price-frontend/static/css/main.e9ea82a1.css.map",
-    "main.f1338e84.js.map": "/fls-water-price-frontend/static/js/main.f1338e84.js.map",
+    "main.cdbadfeb.css.map": "/fls-water-price-frontend/static/css/main.cdbadfeb.css.map",
+    "main.6f96362d.js.map": "/fls-water-price-frontend/static/js/main.6f96362d.js.map",
     "787.0ce44172.chunk.js.map": "/fls-water-price-frontend/static/js/787.0ce44172.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e9ea82a1.css",
-    "static/js/main.f1338e84.js"
+    "static/css/main.cdbadfeb.css",
+    "static/js/main.6f96362d.js"
   ]
 }
