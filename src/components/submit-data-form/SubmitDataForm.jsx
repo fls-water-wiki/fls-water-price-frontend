@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, Field, Form, ErrorMessage } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
 import './SubmitDataForm.css';
@@ -9,9 +9,9 @@ import TextInput from './inputs/TextInput';
 import DropdownInput from './inputs/DropdownInput';
 import RadioInput from './inputs/RadioInput';
 
-import { FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, INITIAL_VALUES, AUTHOR_ROLES } from '../../constants/form_constants';
+import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, AUTHOR_ROLES } from '../../constants/form_constants';
 
-const YUP_REQUIRED = 'Required'
+const YUP_REQUIRED = 'Required';
 
 const SubmissionSchema = Yup.object().shape({
   [FIELDS.PRICE]: Yup.number()
