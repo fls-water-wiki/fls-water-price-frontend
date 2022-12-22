@@ -7,9 +7,11 @@ import './SearchForm.css';
 import TextInput from './inputs/TextInputSearchForm';
 import DropdownInput from './inputs/DropdownInputSearchForm';
 import NumberInput from './inputs/NumberInputSearchForm';
+import RegionsInputSearchForm from './inputs/RegionsDropdown';
 import { performQuery } from '../../utils/api/query';
 
 import { SEARCH_FORM_FIELDS as FIELDS, SEARCH_FORM_INITIAL_VALUES as INITIAL_VALUES, USER_SECTORS, COUNTRY_CODES } from '../../constants/form_constants';
+import REGIONS from '../../constants/regions.json';
 
 const SubmissionSchema = Yup.object().shape({
   [FIELDS.COUNTRY]: Yup.string(),
@@ -21,6 +23,8 @@ const SubmissionSchema = Yup.object().shape({
 });
 
 const SearchForm = ({ setResults }) => {
+
+  
 
   return (
     <div className="search-form-container">
@@ -48,6 +52,7 @@ const SearchForm = ({ setResults }) => {
             console.log(err);
           }
         }}
+        
       >
         {({ errors, touched, handleReset}) => (
           <Form className="form">
@@ -59,7 +64,8 @@ const SearchForm = ({ setResults }) => {
                 }
               </DropdownInput>
               
-              <DropdownInput label='Region' name={FIELDS.REGION} />
+              <RegionsInputSearchForm label='Region' name={FIELDS.REGION} regions={REGIONS} />
+              {/* <DropdownInput label='Region' name={FIELDS.REGION} /> */}
               <NumberInput label='Earliest Year' name={FIELDS.EARLIEST_YEAR} />
               <NumberInput label='Latest Year' name={FIELDS.LATEST_YEAR} />
 
