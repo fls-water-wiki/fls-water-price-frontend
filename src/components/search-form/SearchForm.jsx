@@ -7,7 +7,7 @@ import './SearchForm.css';
 import TextInput from './inputs/TextInputSearchForm';
 import DropdownInput from './inputs/DropdownInputSearchForm';
 import NumberInput from './inputs/NumberInputSearchForm';
-import RegionsInputSearchForm from './inputs/RegionsDropdown';
+import RegionsInputSearchForm from './inputs/RegionsDropdownSearchForm';
 import { performQuery } from '../../utils/api/query';
 
 import { SEARCH_FORM_FIELDS as FIELDS, SEARCH_FORM_INITIAL_VALUES as INITIAL_VALUES, USER_SECTORS, COUNTRY_CODES } from '../../constants/form_constants';
@@ -72,7 +72,7 @@ const SearchForm = ({ setResults }) => {
               <DropdownInput label='User Sector' name={FIELDS.USER_SECTOR}>
                 <option value=''>Select ...</option>
                 {
-                  USER_SECTORS.map(sector => <option value={sector.value}>{sector.code}</option>)
+                  USER_SECTORS.map(sector => <option value={sector.value}>{sector.name}</option>)
                 }
               </DropdownInput>
 

@@ -8,8 +8,11 @@ import NumberInput from './inputs/NumberInput';
 import TextInput from './inputs/TextInput';
 import DropdownInput from './inputs/DropdownInput';
 import RadioInput from './inputs/RadioInput';
+import RegionsDropdown from './inputs/RegionsDropdown';
 
-import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, AUTHOR_ROLES } from '../../constants/form_constants';
+import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, AUTHOR_ROLES, COUNTRY_CODES } from '../../constants/form_constants';
+
+import REGIONS from '../../constants/regions.json';
 
 const YUP_REQUIRED = 'Required';
 
@@ -20,34 +23,26 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.CURRENCY]: Yup.string()
     .required(YUP_REQUIRED),
   [FIELDS.DATE]: Yup.number()
-    .required(YUP_REQUIRED),
+    .min(1700, 'The year must be 1700 or later')
+    .max(new Date().getFullYear(), 'The year must be the current year or earlier'),
   [FIELDS.WATER_UNIT]: Yup.string()
     .required(YUP_REQUIRED),
   [FIELDS.PRICE_TYPE]: Yup.string()
     .required(YUP_REQUIRED),
-  [FIELDS.USER_SECTOR]: Yup.string()
-    .required(YUP_REQUIRED),
+  [FIELDS.USER_SECTOR]: Yup.string(),
   [FIELDS.INDIGENOUS_TERRITORY]: Yup.string(),
-  [FIELDS.REGION]: Yup.string()
+  [FIELDS.COUNTRY]: Yup.string()
     .required(YUP_REQUIRED),
-  [FIELDS.DATA_SOURCE]: Yup.string()
-    .required(YUP_REQUIRED),
+  [FIELDS.REGION]: Yup.string(),
   [FIELDS.SOURCE_URL]: Yup.string()
     .required(YUP_REQUIRED),
   [FIELDS.SOURCE_TITLE]: Yup.string()
     .required(YUP_REQUIRED),
-  [FIELDS.SOURCE_DESCRIPTION]: Yup.string()
-    .required(YUP_REQUIRED),
+  [FIELDS.SOURCE_DESCRIPTION]: Yup.string(),
   [FIELDS.SOURCE_DATE]: Yup.number()
-    .required(YUP_REQUIRED),
-  [FIELDS.SOURCE_AUTHOR_1]: Yup.string()
-    .required(YUP_REQUIRED),
-  [FIELDS.SOURCE_AUTHOR_1_ROLE]: Yup.string()
-    .required(YUP_REQUIRED),
-  [FIELDS.SOURCE_AUTHOR_2]: Yup.string(),
-  [FIELDS.SOURCE_AUTHOR_2_ROLE]: Yup.string(),
-  [FIELDS.SOURCE_AUTHOR_3]: Yup.string(),
-  [FIELDS.SOURCE_AUTHOR_3_ROLE]: Yup.string(),
+    .min(1700, 'The year must be 1700 or later')
+    .max(new Date().getFullYear(), 'The year must be the current year or earlier'),
+  [FIELDS.SOURCE_AUTHORS]: Yup.string(),
 });
 
 const SubmitDataForm = () => {
@@ -95,7 +90,7 @@ const SubmitDataForm = () => {
           <RadioInput
             header='Water unit'
             description='Enter the unit of water to which this price/value applies. If the unit is not available, contact the database manager.'
-            required={false}
+            required={true}
             name={FIELDS.WATER_UNIT}
             groupId='water_unit'
             options={WATER_UNITS}
@@ -117,7 +112,7 @@ const SubmitDataForm = () => {
               </>
             }
             groupId={'price_value_type'}
-            required={false}
+            required={true}
             name={FIELDS.PRICE_TYPE}
             options={PRICE_TYPES}
           />
@@ -136,7 +131,7 @@ const SubmitDataForm = () => {
           >
             <option value=''>Select ...</option>
             {
-              USER_SECTORS.map(sector => <option value={sector.value}>{sector.code}</option>)
+              USER_SECTORS.map(sector => <option value={sector.value}>{sector.name}</option>)
             }
           </DropdownInput>
           {errors[FIELDS.USER_SECTOR] && touched[FIELDS.USER_SECTOR] ? (<div>{errors[FIELDS.USER_SECTOR]}</div>) : null}
@@ -151,26 +146,28 @@ const SubmitDataForm = () => {
           {errors[FIELDS.INDIGENOUS_TERRITORY] && touched[FIELDS.INDIGENOUS_TERRITORY] ? (<div>{errors[FIELDS.INDIGENOUS_TERRITORY]}</div>) : null}
 
           <DropdownInput 
-            header='Region'
-            required={false}
-            name={FIELDS.REGION}
-            // TODO: options
-          />
+            header='Country'
+            required={true}
+            name={FIELDS.COUNTRY}
+          >
+            <option value=''>Select ...</option>
+            {
+              COUNTRY_CODES.map(country => <option value={country.let3}>{country.name}</option>)
+            }
+          </DropdownInput>
+          {errors[FIELDS.COUNTRY] && touched[FIELDS.COUNTRY] ? (<div>{errors[FIELDS.COUNTRY]}</div>) : null}
+
+          <RegionsDropdown label='Region' name={FIELDS.REGION} regions={REGIONS} />
           {errors[FIELDS.REGION] && touched[FIELDS.REGION] ? (<div>{errors[FIELDS.REGION]}</div>) : null}
 
-          <TextInput
-            header='Data source'
-            description='Provide a source for your information. Search by URL/URI; if your source is not already listed, please add it using the “+” sign next to the dropdown list.'
-            required={false}
-            name={FIELDS.DATA_SOURCE}
-          />
-          {errors[FIELDS.DATA_SOURCE] && touched[FIELDS.DATA_SOURCE] ? (<div>{errors[FIELDS.DATA_SOURCE]}</div>) : null}
+          <hr style={{marginTop: '2em'}}></hr>
+          <h2>Source Information</h2>
 
           <div>
             <TextInput
               header='URL/URI'
               description='Unique identifier for the data source. This may be the URL of a webpage, or another unique identifier. If possible, please use a stable URL (if unsure, please webarchive it at https://archive.org/web/). If it is a print resource, please provide a link to a WorldCat record or other online record.'
-              required={false}
+              required={true}
               name={FIELDS.SOURCE_URL}
             />
             {errors[FIELDS.SOURCE_URL] && touched[FIELDS.SOURCE_URL] ? (<div>{errors[FIELDS.SOURCE_URL]}</div>) : null}
@@ -178,7 +175,7 @@ const SubmitDataForm = () => {
             <TextInput
               header='Title'
               description='Title of data source. Please record as written in the source.'
-              required={false}
+              required={true}
               name={FIELDS.SOURCE_TITLE}
             />
             {errors[FIELDS.SOURCE_TITLE] && touched[FIELDS.SOURCE_TITLE] ? (<div>{errors[FIELDS.SOURCE_TITLE]}</div>) : null}
@@ -200,68 +197,14 @@ const SubmitDataForm = () => {
             {errors[FIELDS.SOURCE_DESCRIPTION] && touched[FIELDS.SOURCE_DESCRIPTION] ? (<div>{errors[FIELDS.SOURCE_DESCRIPTION]}</div>) : null}
 
             <TextInput
-              header='Author 1'
-              description='Type in the name of the first author provided in the source'
+              header='Author(s)'
+              description='Type in the names of the authors provided in the source. Separate them using commas.'
               required={false}
-              name={FIELDS.SOURCE_AUTHOR_1}
+              name={FIELDS.SOURCE_AUTHORS}
             />
-            {errors[FIELDS.SOURCE_AUTHOR_1] && touched[FIELDS.SOURCE_AUTHOR_1] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_1]}</div>) : null}
+            {errors[FIELDS.SOURCE_AUTHORS] && touched[FIELDS.SOURCE_AUTHORS] ? (<div>{errors[FIELDS.SOURCE_AUTHORS]}</div>) : null}
 
-            <DropdownInput
-              header='Role of author 1'
-              description='Select the role of the first author'
-              required={false}
-              name={FIELDS.SOURCE_AUTHOR_1_ROLE}
-            >
-              <option value=''>Select ...</option>
-              {
-                AUTHOR_ROLES.map(role => <option value={role.value}>{role.label}</option>)
-              }
-            </DropdownInput>
-            {errors[FIELDS.SOURCE_AUTHOR_1_ROLE] && touched[FIELDS.SOURCE_AUTHOR_1_ROLE] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_1_ROLE]}</div>) : null}
-
-            <TextInput
-              header='Author 2'
-              description='Type in the name of the second author provided in the source, if any'
-              required={false}
-              name={FIELDS.SOURCE_AUTHOR_2}
-            />
-            {errors[FIELDS.SOURCE_AUTHOR_2] && touched[FIELDS.SOURCE_AUTHOR_2] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_2]}</div>) : null}
-
-            <DropdownInput
-              header='Role of author 2'
-              description='Select the role of the second author, if any'
-              required={false}
-              name={FIELDS.SOURCE_AUTHOR_2_ROLE}
-            >
-              <option value=''>Select ...</option>
-              {
-                AUTHOR_ROLES.map(role => <option value={role.value}>{role.label}</option>)
-              }
-            </DropdownInput>
-            {errors[FIELDS.SOURCE_AUTHOR_2_ROLE] && touched[FIELDS.SOURCE_AUTHOR_2_ROLE] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_2_ROLE]}</div>) : null}
-
-            <TextInput
-              header='Author 3'
-              description='Type in the name of the third author provided in the source, if any'
-              required={false}
-              name={FIELDS.SOURCE_AUTHOR_3}
-            />
-            {errors[FIELDS.SOURCE_AUTHOR_3] && touched[FIELDS.SOURCE_AUTHOR_3] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_3]}</div>) : null}
-
-            <DropdownInput
-              header='Role of author 3'
-              description='Select the role of the third author, if any'
-              required={false}
-              name={FIELDS.SOURCE_AUTHOR_3_ROLE}
-            >
-              <option value=''>Select ...</option>
-              {
-                AUTHOR_ROLES.map(role => <option value={role.value}>{role.label}</option>)
-              }
-            </DropdownInput>
-            {errors[FIELDS.SOURCE_AUTHOR_3_ROLE] && touched[FIELDS.SOURCE_AUTHOR_3_ROLE] ? (<div>{errors[FIELDS.SOURCE_AUTHOR_3_ROLE]}</div>) : null}
-
+            
           </div>
         </Form>
       )}

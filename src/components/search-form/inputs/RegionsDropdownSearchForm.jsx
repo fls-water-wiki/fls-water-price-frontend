@@ -5,8 +5,6 @@ import './SearchInputs.css';
 
 import DropdownInputSearchForm from './DropdownInputSearchForm';
 
-import { SEARCH_FORM_FIELDS as FIELDS } from '../../../constants/form_constants';
-
 const RegionsInputSearchForm = ({ label, name, regions, ...props}) => {
   const [field, meta] = useField(props);
   const {values: { COUNTRY }} = useFormikContext();
