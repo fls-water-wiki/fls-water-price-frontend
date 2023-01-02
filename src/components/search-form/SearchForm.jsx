@@ -41,8 +41,8 @@ const SearchForm = ({ setResults }) => {
             const res = await performQuery({
                 "nation_id": values[FIELDS.COUNTRY].toUpperCase(),
                 "region_name": values[FIELDS.REGION],
-                "earliest_year": parseInt(values[FIELDS.COUNTRY]),
-                "latest_year": parseInt(values[FIELDS.COUNTRY]),
+                "earliest_year": parseInt(values[FIELDS.EARLIEST_YEAR]),
+                "latest_year": parseInt(values[FIELDS.LATEST_YEAR]),
                 "user_sector":  values[FIELDS.USER_SECTOR],
                 "water_treatment":  values[FIELDS.WATER_TREATMENT]
               })
