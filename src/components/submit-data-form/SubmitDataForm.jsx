@@ -52,7 +52,7 @@ const SubmitDataForm = () => {
       initialValues={INITIAL_VALUES}
       validationSchema={SubmissionSchema}
       onSubmit={(values) => {
-
+        alert(JSON.stringify(values, null, 2));
       }}
     >
       {({ errors, touched }) => (
@@ -92,7 +92,6 @@ const SubmitDataForm = () => {
             description='Enter the unit of water to which this price/value applies. If the unit is not available, contact the database manager.'
             required={true}
             name={FIELDS.WATER_UNIT}
-            groupId='water_unit'
             options={WATER_UNITS}
           />
           {errors[FIELDS.WATER_UNIT] && touched[FIELDS.WATER_UNIT] ? (<div>{errors[FIELDS.WATER_UNIT]}</div>) : null}
@@ -111,7 +110,6 @@ const SubmitDataForm = () => {
                   </ul>
               </>
             }
-            groupId={'price_value_type'}
             required={true}
             name={FIELDS.PRICE_TYPE}
             options={PRICE_TYPES}
@@ -163,48 +161,48 @@ const SubmitDataForm = () => {
           <hr style={{marginTop: '2em'}}></hr>
           <h2>Source Information</h2>
 
+          <TextInput
+            header='URL/URI'
+            description='Unique identifier for the data source. This may be the URL of a webpage, or another unique identifier. If possible, please use a stable URL (if unsure, please webarchive it at https://archive.org/web/). If it is a print resource, please provide a link to a WorldCat record or other online record.'
+            required={true}
+            name={FIELDS.SOURCE_URL}
+          />
+          {errors[FIELDS.SOURCE_URL] && touched[FIELDS.SOURCE_URL] ? (<div>{errors[FIELDS.SOURCE_URL]}</div>) : null}
+
+          <TextInput
+            header='Title'
+            description='Title of data source. Please record as written in the source.'
+            required={true}
+            name={FIELDS.SOURCE_TITLE}
+          />
+          {errors[FIELDS.SOURCE_TITLE] && touched[FIELDS.SOURCE_TITLE] ? (<div>{errors[FIELDS.SOURCE_TITLE]}</div>) : null}
+
+          <NumberInput
+            header='Date'
+            description='Provide the date of publication of the data source (or, if unpublished, the date of creation if possible). Record the date as presented in the text.'
+            required={false}
+            name={FIELDS.SOURCE_DATE}
+          />
+          {errors[FIELDS.SOURCE_DATE] && touched[FIELDS.SOURCE_DATE] ? (<div>{errors[FIELDS.SOURCE_DATE]}</div>) : null}
+
+          <TextInput
+            header='Description'
+            description='Provide a short description of the data source. This may be copied directly from an abstract or other summary provided in the text.'
+            required={false}
+            name={FIELDS.SOURCE_DESCRIPTION}
+          />
+          {errors[FIELDS.SOURCE_DESCRIPTION] && touched[FIELDS.SOURCE_DESCRIPTION] ? (<div>{errors[FIELDS.SOURCE_DESCRIPTION]}</div>) : null}
+
+          <TextInput
+            header='Author(s)'
+            description='Type in the names of the authors provided in the source. Separate them using commas.'
+            required={false}
+            name={FIELDS.SOURCE_AUTHORS}
+          />
+          {errors[FIELDS.SOURCE_AUTHORS] && touched[FIELDS.SOURCE_AUTHORS] ? (<div>{errors[FIELDS.SOURCE_AUTHORS]}</div>) : null}
+
           <div>
-            <TextInput
-              header='URL/URI'
-              description='Unique identifier for the data source. This may be the URL of a webpage, or another unique identifier. If possible, please use a stable URL (if unsure, please webarchive it at https://archive.org/web/). If it is a print resource, please provide a link to a WorldCat record or other online record.'
-              required={true}
-              name={FIELDS.SOURCE_URL}
-            />
-            {errors[FIELDS.SOURCE_URL] && touched[FIELDS.SOURCE_URL] ? (<div>{errors[FIELDS.SOURCE_URL]}</div>) : null}
-
-            <TextInput
-              header='Title'
-              description='Title of data source. Please record as written in the source.'
-              required={true}
-              name={FIELDS.SOURCE_TITLE}
-            />
-            {errors[FIELDS.SOURCE_TITLE] && touched[FIELDS.SOURCE_TITLE] ? (<div>{errors[FIELDS.SOURCE_TITLE]}</div>) : null}
-
-            <NumberInput
-              header='Date'
-              description='Provide the date of publication of the data source (or, if unpublished, the date of creation if possible). Record the date as presented in the text.'
-              required={false}
-              name={FIELDS.SOURCE_DATE}
-            />
-            {errors[FIELDS.SOURCE_DATE] && touched[FIELDS.SOURCE_DATE] ? (<div>{errors[FIELDS.SOURCE_DATE]}</div>) : null}
-
-            <TextInput
-              header='Description'
-              description='Provide a short description of the data source. This may be copied directly from an abstract or other summary provided in the text.'
-              required={false}
-              name={FIELDS.SOURCE_DESCRIPTION}
-            />
-            {errors[FIELDS.SOURCE_DESCRIPTION] && touched[FIELDS.SOURCE_DESCRIPTION] ? (<div>{errors[FIELDS.SOURCE_DESCRIPTION]}</div>) : null}
-
-            <TextInput
-              header='Author(s)'
-              description='Type in the names of the authors provided in the source. Separate them using commas.'
-              required={false}
-              name={FIELDS.SOURCE_AUTHORS}
-            />
-            {errors[FIELDS.SOURCE_AUTHORS] && touched[FIELDS.SOURCE_AUTHORS] ? (<div>{errors[FIELDS.SOURCE_AUTHORS]}</div>) : null}
-
-            
+            <button type="submit" className="btn" style={{marginLeft: 0, marginTop: '2em'}}>Submit</button>
           </div>
         </Form>
       )}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { useField } from 'formik';
+import { Field, useField } from 'formik';
 
 import './RadioInput.css';
 
-const RadioInput = ({ header, description, required, groupId, options, ...props}) => {
+const RadioInput = ({ header, name, description, required, options, ...props}) => {
   const [field, meta] = useField(props);
   return (
 
@@ -13,11 +13,11 @@ const RadioInput = ({ header, description, required, groupId, options, ...props}
         {description}
       </label>    
       
-      <fieldset className='radio-options' id={groupId}>
+      <fieldset className='radio-options' id={name}>
         { 
           options.map(option => (
             <div className='option'>
-              <input type='radio' id={option.value} key={option.value} name={groupId} value={option.value} />
+              <Field type='radio' id={option.value} key={option.value} name={name} value={option.value} />
               <label key={option.value} for={option.value}>{option.label}</label>
             </div>
           ))
