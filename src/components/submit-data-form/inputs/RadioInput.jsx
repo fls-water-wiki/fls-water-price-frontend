@@ -18,7 +18,7 @@ const RadioInput = ({ header, name, description, required, options, ...props}) =
           options.map(option => (
             <div className='option'>
               <Field type='radio' id={option.value} key={option.value} name={name} value={option.value} />
-              <label key={option.value} for={option.value}>{option.label}</label>
+              <label for={option.value}>{option.label}</label>
             </div>
           ))
         }

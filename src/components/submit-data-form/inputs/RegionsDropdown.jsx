@@ -6,14 +6,13 @@ import { useField, useFormikContext } from 'formik';
 import DropdownInput from './DropdownInput';
 
 const RegionsDropdown = ({ label, name, regions, ...props}) => {
-  const [field, meta] = useField(props);
-  const {values: { COUNTRY }} = useFormikContext();
+  const {values: { country }} = useFormikContext();
 
   const [currentRegions, setCurrentRegions] = useState([]);
 
   useEffect(() => {
-    setCurrentRegions(regions[COUNTRY])
-  }, [regions, COUNTRY, setCurrentRegions]);
+    setCurrentRegions(regions[country])
+  }, [regions, country, setCurrentRegions]);
 
   return (
     <DropdownInput header={label} name={name}>

@@ -1,13 +1,7 @@
 import axios from 'axios';
 import { baseURL } from './baseURL';
 
-export const createSuggestion = (waterSourceName) => {
-    return {
-        'name': waterSourceName
-    }
-}
-
-export const sendSuggestion = async (query) => {
+export const submitData = async (query) => {
     const result = await axios({
         method: 'post',
         url: `${baseURL}//suggestion`,

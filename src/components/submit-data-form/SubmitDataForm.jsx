@@ -13,6 +13,7 @@ import RegionsDropdown from './inputs/RegionsDropdown';
 import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, AUTHOR_ROLES, COUNTRY_CODES } from '../../constants/form_constants';
 
 import REGIONS from '../../constants/regions.json';
+import { submitData } from '../../utils/api/submitData';
 
 const YUP_REQUIRED = 'Required';
 
@@ -24,7 +25,8 @@ const SubmissionSchema = Yup.object().shape({
     .required(YUP_REQUIRED),
   [FIELDS.DATE]: Yup.number()
     .min(1700, 'The year must be 1700 or later')
-    .max(new Date().getFullYear(), 'The year must be the current year or earlier'),
+    .max(new Date().getFullYear(), 'The year must be the current year or earlier')
+    .integer('Must be an integer (whole number)'),
   [FIELDS.WATER_UNIT]: Yup.string()
     .required(YUP_REQUIRED),
   [FIELDS.PRICE_TYPE]: Yup.string()
@@ -41,7 +43,8 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.SOURCE_DESCRIPTION]: Yup.string(),
   [FIELDS.SOURCE_DATE]: Yup.number()
     .min(1700, 'The year must be 1700 or later')
-    .max(new Date().getFullYear(), 'The year must be the current year or earlier'),
+    .max(new Date().getFullYear(), 'The year must be the current year or earlier')
+    .integer('Must be an integer (whole number)'),
   [FIELDS.SOURCE_AUTHORS]: Yup.string(),
 });
 
@@ -51,9 +54,23 @@ const SubmitDataForm = () => {
     <Formik
       initialValues={INITIAL_VALUES}
       validationSchema={SubmissionSchema}
-      onSubmit={(values) => {
-        alert(JSON.stringify(values, null, 2));
-      }}
+      onSubmit={async (values) => {
+
+        const submission = {
+          ...values,
+          [FIELDS.PRICE]: parseFloat(values[FIELDS.PRICE]),
+          [FIELDS.DATE]: parseInt(values[FIELDS.DATE]),
+          [FIELDS.SOURCE_DATE]: parseInt(values[FIELDS.SOURCE_DATE]),
+          
+        }
+        
+        try {
+          await submitData(values);
+        } catch (err) {
+          console.log(err);
+        }
+
+    }}
     >
       {({ errors, touched }) => (
         <Form className='submit-data-form'>
