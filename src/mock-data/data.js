@@ -6,7 +6,7 @@ export const data = [
         'type': 'Transactional price',
         'water_treatment': 'Desalination',
         'currency': 'USD',
-        'country_id': 'MEX',
+        'nat_code': 'MEX',
         'source': {
             'uri': 'https://www.nuevaatacama.cl/recursos-ata/Tarifas/Tarifa%20ACA%2031%20de%20Julio%202018.pdf',
             'title': 'TARIFAS VIGENTES PARA LECTURAS LEIDAS DESDE EL 31 de Julio 2018',
@@ -23,7 +23,7 @@ export const data = [
         'type': 'Transactional price',
         'water_treatment': 'Desalination',
         'currency': 'USD',
-        'country_id': 'MEX',
+        'nat_code': 'MEX',
         'source': {
             'uri': 'https://www.nuevaatacama.cl/recursos-ata/Tarifas/Tarifa%20ACA%2031%20de%20Julio%202018.pdf',
             'title': 'TARIFAS VIGENTES PARA LECTURAS LEIDAS DESDE EL 31 de Julio 2018',
@@ -40,7 +40,7 @@ export const data = [
         'type': 'Transactional price',
         'water_treatment': 'Desalination',
         'currency': 'EUR',
-        'country_id': 'MEX',
+        'nat_code': 'MEX',
         'source': {
             'uri': 'https://www.nuevaatacama.cl/recursos-ata/Tarifas/Tarifa%20ACA%2031%20de%20Julio%202018.pdf',
             'title': 'TARIFAS VIGENTES PARA LECTURAS LEIDAS DESDE EL 31 de Julio 2018',
@@ -58,7 +58,7 @@ export const data = [
         'type': 'Statutory price',
         'water_treatment': 'Desalination',
         'currency': 'USD',
-        'country_id': 'MEX',
+        'nat_code': 'MEX',
         'source': {
             'uri': 'https://www.nuevaatacama.cl/recursos-ata/Tarifas/Tarifa%20ACA%2031%20de%20Julio%202018.pdf',
             'title': 'TARIFAS VIGENTES PARA LECTURAS LEIDAS DESDE EL 31 de Julio 2018',
@@ -75,7 +75,7 @@ export const data = [
         'type': 'Transactional price',
         'water_treatment': 'Desalination',
         'currency': 'USD',
-        'country_id': 'MEX',
+        'nat_code': 'MEX',
         'source': {
             'uri': 'https://www.nuevaatacama.cl/recursos-ata/Tarifas/Tarifa%20ACA%2031%20de%20Julio%202018.pdf',
             'title': 'TARIFAS VIGENTES PARA LECTURAS LEIDAS DESDE EL 31 de Julio 2018',

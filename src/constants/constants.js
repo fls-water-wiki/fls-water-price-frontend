@@ -1,12 +1,12 @@
 export const csvHeaders = [
     // {label: "ID", key: "vp_id"},
-    {label: "Water Treatment", key: "vp_water_treatment"},
-    {label: "Water Unit", key: "vp_water_unit"},
-    {label: "Price", key: "vp_num"},
-    {label: "Currency", key: "currency_id"},
-    {label: "Year", key: "vp_date"},
-    {label: "Country ID", key: "nation_id"},
-    {label: "Source", key: "src_title"},
+    {label: "Water Treatment", key: "water_treatment"},
+    {label: "Water Unit", key: "water_unit"},
+    {label: "Price", key: "price"},
+    {label: "Currency", key: "currency"},
+    {label: "Year", key: "year"},
+    {label: "Country Code", key: "nat_code"},
+    {label: "Source", key: "source_title"},
 ];
 
 export const fields = ["ID", "Water Treatment", "Water Unit", "Price",  "Currency", "Year", "Country ID", "Source URI"];
@@ -17,8 +17,8 @@ export const TABLE_COLUMNS = {
     PRICE: 'price',
     CURRENCY: 'currency',
     YEAR: 'year',
-    COUNTRY_ID: 'country_id',
-    SOURCE: 'source',
+    NAT_CODE: 'nat_code',
+    SOURCE_TITLE: 'source',
 }
 
 export const TABLE_COLUMN_DESCRIPTIONS = {
@@ -27,6 +27,6 @@ export const TABLE_COLUMN_DESCRIPTIONS = {
     PRICE: 'Numerical value for water cost.',
     CURRENCY: 'Relevant national currency. Uses ISO 4217 as standard list.',
     YEAR: 'Year in which the water cost was active.',
-    COUNTRY_ID: 'The country under whose jurisdiction the water cost falls. Uses ISO 3166 country codes as standard list.',
-    SOURCE: 'Information source',
+    NAT_CODE: 'The country under whose jurisdiction the water cost falls. Uses ISO 3166 country codes as standard list.',
+    SOURCE_TITLE: 'Information source',
 }

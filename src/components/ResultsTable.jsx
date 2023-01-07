@@ -66,7 +66,7 @@ function ResultsTable({ results }) {
                    +result.price.toFixed(2), 
                     result.currency, 
                     result.year,
-                    result.country_id
+                    result.nat_code
                   ]
                   
                 return(
