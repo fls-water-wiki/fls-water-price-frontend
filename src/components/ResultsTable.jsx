@@ -61,13 +61,12 @@ function ResultsTable({ results }) {
               results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map(result => {
 
                   const resultFields = [
-                    // result.vp_id,
-                    result.vp_water_treatment, 
-                    result.vp_water_unit, 
-                   +result.vp_num.toFixed(2), 
-                    result.currency_id, 
-                    result.vp_date,
-                    result.nation_id
+                    result.water_treatment, 
+                    result.water_unit, 
+                   +result.price.toFixed(2), 
+                    result.currency, 
+                    result.year,
+                    result.country_id
                   ]
                   
                 return(
@@ -79,7 +78,7 @@ function ResultsTable({ results }) {
                     }
                     {/* separate due to different formatting */}
                     <td className="results-table-data-item">
-                      <a href={result.source_uri}>{result.src_title}</a>
+                      <a href={result.source.uri}>{result.source.title}</a>
                     </td>
                   </tr>
                 )

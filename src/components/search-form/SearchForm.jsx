@@ -65,7 +65,6 @@ const SearchForm = ({ setResults }) => {
               </DropdownInput>
               
               <RegionsInputSearchForm label='Region' name={FIELDS.REGION} regions={REGIONS} />
-              {/* <DropdownInput label='Region' name={FIELDS.REGION} /> */}
               <NumberInput label='Earliest Year' name={FIELDS.EARLIEST_YEAR} />
               <NumberInput label='Latest Year' name={FIELDS.LATEST_YEAR} />
 
