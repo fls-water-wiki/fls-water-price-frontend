@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/fls-water-price-frontend/static/css/main.cdbadfeb.css",
-    "main.js": "/fls-water-price-frontend/static/js/main.d9ccf1f1.js",
+    "main.js": "/fls-water-price-frontend/static/js/main.686d1cc7.js",
     "static/js/787.0ce44172.chunk.js": "/fls-water-price-frontend/static/js/787.0ce44172.chunk.js",
     "index.html": "/fls-water-price-frontend/index.html",
     "main.cdbadfeb.css.map": "/fls-water-price-frontend/static/css/main.cdbadfeb.css.map",
-    "main.d9ccf1f1.js.map": "/fls-water-price-frontend/static/js/main.d9ccf1f1.js.map",
+    "main.686d1cc7.js.map": "/fls-water-price-frontend/static/js/main.686d1cc7.js.map",
     "787.0ce44172.chunk.js.map": "/fls-water-price-frontend/static/js/787.0ce44172.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.cdbadfeb.css",
-    "static/js/main.d9ccf1f1.js"
+    "static/js/main.686d1cc7.js"
   ]
 }
