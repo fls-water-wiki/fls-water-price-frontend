@@ -39,12 +39,12 @@ const SearchForm = ({ setResults }) => {
         onSubmit={async (values) => {
           try {
             const res = await performQuery({
-                "nation_id": values[FIELDS.COUNTRY].toUpperCase(),
-                "region_name": values[FIELDS.REGION],
+                "nat_code": values[FIELDS.COUNTRY].toUpperCase(),
+                "region_code": values[FIELDS.REGION],
                 "earliest_year": parseInt(values[FIELDS.EARLIEST_YEAR]),
                 "latest_year": parseInt(values[FIELDS.LATEST_YEAR]),
-                "user_sector":  values[FIELDS.USER_SECTOR],
-                "water_treatment":  values[FIELDS.WATER_TREATMENT]
+                "sector_code":  values[FIELDS.USER_SECTOR],
+                // "water_treatment":  values[FIELDS.WATER_TREATMENT]
               })
             const rows = res.data.data.rows;
             setResults(rows);

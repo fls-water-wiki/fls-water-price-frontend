@@ -18,7 +18,7 @@ const RegionsDropdown = ({ label, name, regions, ...props}) => {
     <DropdownInput header={label} name={name}>
       <option value=''>Select ...</option>
       {
-        currentRegions && currentRegions.map(region => <option value={region.name}>{region.name}</option>)
+        currentRegions && currentRegions.map(region => <option value={region.region_code}>{region.region_name}</option>)
       }
     </DropdownInput>
   );

@@ -61,11 +61,11 @@ function ResultsTable({ results }) {
               results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map(result => {
 
                   const resultFields = [
-                    result.water_treatment, 
-                    result.water_unit, 
-                   +result.price.toFixed(2), 
-                    result.currency, 
-                    result.year,
+                    result.vp_wtrtrt, 
+                    result.vp_wtrunit, 
+                   +parseInt(result.vp_num).toFixed(2), 
+                    result.curr_code, 
+                    result.vp_date,
                     result.nat_code
                   ]
                   
@@ -78,7 +78,7 @@ function ResultsTable({ results }) {
                     }
                     {/* separate due to different formatting */}
                     <td className="results-table-data-item">
-                      <a href={result.source.uri}>{result.source.title}</a>
+                      <a href={result.source_uri}>{result.source_title}</a>
                     </td>
                   </tr>
                 )

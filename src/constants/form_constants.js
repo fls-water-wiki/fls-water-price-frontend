@@ -9,9 +9,9 @@ export const SUBMISSION_FORM_FIELDS = {
   COUNTRY: 'country',
   REGION: 'region',
   DATA_SOURCE: 'data_source',
-  SOURCE_URL: 'source_url',
+  SOURCE_URL: 'source_uri',
   SOURCE_TITLE: 'source_title',
-  SOURCE_DATE: 'source_data',
+  SOURCE_DATE: 'source_date',
   SOURCE_DESCRIPTION: 'source_description',
   SOURCE_AUTHORS: 'source_authors',
 };
@@ -55,19 +55,19 @@ export const AUTHOR_ROLES = [
 
 export const PRICE_TYPES = [
   {
-    value: 'statutory_price',
-    label: 'Statutory price'
+    value: 'REG',
+    label: 'Regulatory price'
   },
   {
-    value: 'transactional_price',
+    value: 'TRA',
     label: 'Transactional price'
   },
   {
-    value: 'environmental_value',
+    value: 'ENV',
     label: 'Environmental value'
   },
   {
-    value: 'derived_value',
+    value: 'DER',
     label: 'Derived value'
   },
 ];
@@ -109,102 +109,102 @@ export const WATER_UNITS = [
 
 export const USER_SECTORS = [
   {
-    value: 'naics_11',
+    value: 'NAICS 11',
     code: 'NAICS 11',
     name: 'Agriculture, Forestry, Fishing and Hunting'
   },
   {
-    value: 'naics_21',
+    value: 'NAICS 21',
     code: 'NAICS 21',
     name: 'Mining, Quarrying, and Oil and Gas Extraction'
   },
   {
-    value: 'naics_22',
+    value: 'NAICS 22',
     code: 'NAICS 22',
     name: 'Utilies'
   },
   {
-    value: 'naics_23',
+    value: 'NAICS 23',
     code: 'NAICS 23',
     name: 'Construction'
   },
   {
-    value: 'naics_31-33',
+    value: 'NAICS 31-33',
     code: 'NAICS 31-33',
     name: 'Manufacturing'
   },
   {
-    value: 'naics_42',
+    value: 'NAICS 42',
     code: 'NAICS 42',
     name: 'Wholesale Trade'
   },
   {
-    value: 'naics_44-45',
+    value: 'NAICS 44-45',
     code: 'NAICS 44-45',
     name: 'Retail Trade'
   },
   {
-    value: 'naics_48-49',
+    value: 'NAICS 48-49',
     code: 'NAICS 48-49',
     name: 'Transportation and Warehousing'
   },
   {
-    value: 'naics_51',
+    value: 'NAICS 51',
     code: 'NAICS 51',
     name: 'Information'
   },
   {
-    value: 'naics_52',
+    value: 'NAICS 52',
     code: 'NAICS 52',
     name: 'Finance and Insurance'
   },
   {
-    value: 'naics_53',
+    value: 'NAICS 53',
     code: 'NAICS 53',
     name: 'Real Estate and Rental and Leasing'
   },
   {
-    value: 'naics_54',
+    value: 'NAICS 54',
     code: 'NAICS 54',
     name: 'Professional, Scientific, and Technical Services'
   },
   {
-    value: 'naics_55',
+    value: 'NAICS 55',
     code: 'NAICS 55',
     name: 'Management of Companies and Enterprises'
   },
   {
-    value: 'naics_56',
+    value: 'NAICS 56',
     code: 'NAICS 56',
     name: 'Adminstrative and Support and Waste Management'
   },
   {
-    value: 'naics_61',
+    value: 'NAICS 61',
     code: 'NAICS 61',
     name: 'Educational Services'
   },
   {
-    value: 'naics_62',
+    value: 'NAICS 62',
     code: 'NAICS 62',
     name: 'Health Care and Social Assistance'
   },
   {
-    value:'naics_71',
+    value:'NAICS 71',
     code: 'NAICS 71',
     name: 'Arts, Entertainment, and Recreation'
   },
   {
-    value: 'naics_72',
+    value: 'NAICS 72',
     code: 'NAICS 72',
     name: 'Accomodation and Food Services'
   },
   {
-    value: 'naics_81',
+    value: 'NAICS 81',
     code: 'NAICS 81',
     name: 'Other Services (except Public Administration'
   },
   {
-    value: 'naics_92',
+    value: 'NAICS 92',
     code: 'NAICS 92',
     name: 'Public Administration'
   },

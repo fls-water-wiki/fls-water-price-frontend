@@ -1,10 +1,10 @@
 export const csvHeaders = [
     // {label: "ID", key: "vp_id"},
     {label: "Water Treatment", key: "water_treatment"},
-    {label: "Water Unit", key: "water_unit"},
-    {label: "Price", key: "price"},
-    {label: "Currency", key: "currency"},
-    {label: "Year", key: "year"},
+    {label: "Water Unit", key: "vp_wtrunit"},
+    {label: "Price", key: "vp_num"},
+    {label: "Currency", key: "curr_code"},
+    {label: "Year", key: "vp_date"},
     {label: "Country Code", key: "nat_code"},
     {label: "Source", key: "source_title"},
 ];
@@ -13,12 +13,12 @@ export const fields = ["ID", "Water Treatment", "Water Unit", "Price",  "Currenc
 
 export const TABLE_COLUMNS = {
     WATER_TREATMENT: 'water_treatment',
-    WATER_UNIT: 'water_unit',
-    PRICE: 'price',
-    CURRENCY: 'currency',
+    WATER_UNIT: 'vp_wtrunit',
+    PRICE: 'vp_num',
+    CURRENCY: 'curr_code',
     YEAR: 'year',
     NAT_CODE: 'nat_code',
-    SOURCE_TITLE: 'source',
+    SOURCE_TITLE: 'source_title',
 }
 
 export const TABLE_COLUMN_DESCRIPTIONS = {

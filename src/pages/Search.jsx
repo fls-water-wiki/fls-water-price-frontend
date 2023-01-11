@@ -7,7 +7,7 @@ import SearchForm from '../components/search-form/SearchForm';
 import { data } from '../mock-data/data';
 
 function Search() {
-  const [results, setResults] = useState(data);
+  const [results, setResults] = useState([]);
 
   return (
     <div className="search-container">
