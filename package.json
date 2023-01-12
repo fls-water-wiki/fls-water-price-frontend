@@ -2,7 +2,6 @@
   "name": "water-db-frontend",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://partheebanb.github.io/fls-water-price-frontend",
   "dependencies": {
     "@emotion/react": "^11.9.0",
     "@emotion/styled": "^11.8.1",
