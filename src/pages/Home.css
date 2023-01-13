@@ -3,11 +3,12 @@
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    font-size: large;
 }
 
 .description {
     margin-top: 3em;
-    width: 75%
+    width: 57.5%
 }
 
 .link-cards-container {
