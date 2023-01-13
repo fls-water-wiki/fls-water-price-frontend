@@ -44,7 +44,7 @@ const SearchForm = ({ setResults }) => {
                 "earliest_year": parseInt(values[FIELDS.EARLIEST_YEAR]),
                 "latest_year": parseInt(values[FIELDS.LATEST_YEAR]),
                 "sector_code":  values[FIELDS.USER_SECTOR],
-                // "water_treatment":  values[FIELDS.WATER_TREATMENT]
+                "water_treatment":  values[FIELDS.WATER_TREATMENT]
               })
             const rows = res.data.data.rows;
             setResults(rows);
