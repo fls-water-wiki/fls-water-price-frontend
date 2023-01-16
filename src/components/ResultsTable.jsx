@@ -1,27 +1,27 @@
-import React, {useState} from 'react'
+import React, {useState} from 'react';
 
 import './ResultsTable.css';
 
 import { Pagination } from '@mui/material';
 import { CSVLink } from 'react-csv';
 
-import { csvHeaders, fields } from '../constants/constants';
+import { csvHeaders } from '../constants/constants';
 
 function ResultsTable({ results }) {
 
   const [pageNumber, setPageNumber] = useState(1);
   const [tableLength, setTableLength] = useState(10);
   const [sortAscending, setSortAscending] = useState(false);
-  const [sortColumn, setSortColumn] = useState("");
+  const [sortColumn, setSortColumn] = useState('');
 
   const handlePageNumberChange = (e, value) => {
     setPageNumber(value);
-  }
+  };
 
   const handleTableLengthChange = (e) => {
     setTableLength(e.target.value);
     setPageNumber(1);
-  }
+  };
 
   const sortBy = (column) => {
     if (column === sortColumn) {
@@ -37,7 +37,7 @@ function ResultsTable({ results }) {
     } else {
       results.sort((a, b) => b[column] - a[column]);
     }
-  }
+  };
 
   // country and source
   return (
@@ -49,31 +49,31 @@ function ResultsTable({ results }) {
 
 
           <table className="results-table">
-              <tr className="results-table-header-row">
-                {
-                  csvHeaders.map(header =>
-                    <th className="results-table-header-item" key={header.key} onClick={() => sortBy(header.key)}>{header.label}</th>
-                  )
-                }
-
-              </tr>
+            <tr className="results-table-header-row">
               {
-              results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map(result => {
+                csvHeaders.map(header =>
+                  <th className="results-table-header-item" key={header.key} onClick={() => sortBy(header.key)}>{header.label}</th>
+                )
+              }
 
-                  const resultFields = [
-                    result.vp_wtrtrt, 
-                    result.vp_wtrunit, 
-                   +parseInt(result.vp_num).toFixed(2), 
-                    result.curr_code, 
-                    result.vp_date,
-                    result.nat_code
-                  ]
+            </tr>
+            {
+              results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map((result, rowNumber) => {
+
+                const resultFields = [
+                  result.vp_wtrtrt, 
+                  result.vp_wtrunit, 
+                  +parseInt(result.vp_num).toFixed(2), 
+                  result.curr_code, 
+                  result.vp_date,
+                  result.nat_code
+                ];
                   
                 return(
-                  <tr className="results-table-data-row">
+                  <tr key={rowNumber} className="results-table-data-row">
                     {
                       resultFields.map(resultField => (
-                        <td className="results-table-data-item">{resultField}</td>
+                        <td key={resultField} className="results-table-data-item">{resultField}</td>
                       ))
                     }
                     {/* separate due to different formatting */}
@@ -81,7 +81,7 @@ function ResultsTable({ results }) {
                       <a href={result.source_uri}>{result.source_title}</a>
                     </td>
                   </tr>
-                )
+                );
               })}
           </table>
       }
@@ -96,14 +96,14 @@ function ResultsTable({ results }) {
                 Showing {(pageNumber - 1) * tableLength + 1} - {Math.min(pageNumber * tableLength, results.length)} of {results.length} results
               </div>
               <div className="rows-per-page">
-                <label for="rows-per-page">Show </label>
+                <label htmlFor="rows-per-page">Show </label>
                 <select name="rows-per-page" id="rows-per-page" className="rows-per-page-selector" onChange={handleTableLengthChange}>
                   <option value={10}>10</option>
                   <option value={25}>25</option>
                   <option value={50}>50</option>
                   <option value={100}>100</option>
                 </select>
-                <label for="rows-per-page">rows per page</label> 
+                <label htmlFor="rows-per-page">rows per page</label> 
               </div>
             </div>
             <Pagination className="page-number-selector" count={Math.ceil(results.length / tableLength)}  showFirstButton showLastButton onChange={handlePageNumberChange}/>
@@ -114,7 +114,7 @@ function ResultsTable({ results }) {
             className="csv-link"
             data={results}
             headers={csvHeaders}
-            filename={"results.csv"}
+            filename={'results.csv'}
             target="_blank"
           >
             Download CSV of results
@@ -123,7 +123,7 @@ function ResultsTable({ results }) {
 
       }
     </div>
-  )
+  );
 }
 
-export default ResultsTable
+export default ResultsTable;

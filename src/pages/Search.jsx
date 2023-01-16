@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import './Search.css';
 
 import ResultsTable from '../components/ResultsTable';
 import SearchForm from '../components/search-form/SearchForm';
 
-import { data } from '../mock-data/data';
+// import { data } from '../mock-data/data';
 
 function Search() {
   const [results, setResults] = useState([]);
@@ -13,10 +13,10 @@ function Search() {
     <div className="search-container">
       <div className="main-card">
         <SearchForm setResults={setResults}/>
-       </div>
+      </div>
       <ResultsTable results={results}/>
     </div>
   );
 }
 
-export default Search
+export default Search;

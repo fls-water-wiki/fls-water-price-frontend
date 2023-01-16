@@ -1,4 +1,4 @@
-import React, {useState, useReducer} from 'react';
+import React from 'react';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 
@@ -24,8 +24,6 @@ const SubmissionSchema = Yup.object().shape({
 
 const SearchForm = ({ setResults }) => {
 
-  
-
   return (
     <div className="search-form-container">
 
@@ -39,13 +37,13 @@ const SearchForm = ({ setResults }) => {
         onSubmit={async (values) => {
           try {
             const res = await performQuery({
-                "nat_code": values[FIELDS.COUNTRY].toUpperCase(),
-                "region_code": values[FIELDS.REGION],
-                "earliest_year": parseInt(values[FIELDS.EARLIEST_YEAR]),
-                "latest_year": parseInt(values[FIELDS.LATEST_YEAR]),
-                "sector_code":  values[FIELDS.USER_SECTOR],
-                "water_treatment":  values[FIELDS.WATER_TREATMENT]
-              })
+              'nat_code': values[FIELDS.COUNTRY].toUpperCase(),
+              'region_code': values[FIELDS.REGION],
+              'earliest_year': parseInt(values[FIELDS.EARLIEST_YEAR]),
+              'latest_year': parseInt(values[FIELDS.LATEST_YEAR]),
+              'sector_code':  values[FIELDS.USER_SECTOR],
+              'water_treatment':  values[FIELDS.WATER_TREATMENT]
+            });
             const rows = res.data.data.rows;
             setResults(rows);
           }  catch (err) {
@@ -54,13 +52,13 @@ const SearchForm = ({ setResults }) => {
         }}
         
       >
-        {({ errors, touched, handleReset}) => (
+        {({ handleReset}) => (
           <Form className="form">
             <div className='column'>
               <DropdownInput label='Country' name={FIELDS.COUNTRY}>
                 <option value=''>Select ...</option>
                 {
-                  COUNTRY_CODES.map(country => <option value={country.let3}>{country.name}</option>)
+                  COUNTRY_CODES.map(country => <option key={country.let3} value={country.let3}>{country.name}</option>)
                 }
               </DropdownInput>
               
@@ -71,7 +69,7 @@ const SearchForm = ({ setResults }) => {
               <DropdownInput label='User Sector' name={FIELDS.USER_SECTOR}>
                 <option value=''>Select ...</option>
                 {
-                  USER_SECTORS.map(sector => <option value={sector.value}>{sector.name}</option>)
+                  USER_SECTORS.map(sector => <option key={sector.value} value={sector.value}>{sector.name}</option>)
                 }
               </DropdownInput>
 
@@ -85,7 +83,7 @@ const SearchForm = ({ setResults }) => {
         )}
       </Formik>
     </div>
-  )
+  );
 };
 
 export default SearchForm;

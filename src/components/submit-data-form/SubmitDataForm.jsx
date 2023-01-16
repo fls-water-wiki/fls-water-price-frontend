@@ -10,7 +10,7 @@ import DropdownInput from './inputs/DropdownInput';
 import RadioInput from './inputs/RadioInput';
 import RegionsDropdown from './inputs/RegionsDropdown';
 
-import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, AUTHOR_ROLES, COUNTRY_CODES } from '../../constants/form_constants';
+import { SUBMISSION_FORM_FIELDS as FIELDS, PRICE_TYPES, USER_SECTORS, WATER_UNITS, CURRENCIES, SUBMISSION_FORM_INITIAL_VALUES as INITIAL_VALUES, COUNTRY_CODES } from '../../constants/form_constants';
 
 import REGIONS from '../../constants/regions.json';
 import { submitData } from '../../utils/api/submitData';
@@ -55,22 +55,12 @@ const SubmitDataForm = () => {
       initialValues={INITIAL_VALUES}
       validationSchema={SubmissionSchema}
       onSubmit={async (values) => {
-
-        const submission = {
-          ...values,
-          [FIELDS.PRICE]: parseFloat(values[FIELDS.PRICE]),
-          [FIELDS.DATE]: parseInt(values[FIELDS.DATE]),
-          [FIELDS.SOURCE_DATE]: parseInt(values[FIELDS.SOURCE_DATE]),
-          
-        }
-        
         try {
           await submitData(values);
         } catch (err) {
           console.log(err);
         }
-
-    }}
+      }}
     >
       {({ errors, touched }) => (
         <Form className='submit-data-form'>
@@ -90,7 +80,7 @@ const SubmitDataForm = () => {
           >
             <option value=''>Select ...</option>
             {
-              CURRENCIES.map(currency => <option value={currency.cc}>{currency.cc}</option>)
+              CURRENCIES.map(currency => <option key={currency.cc} value={currency.cc}>{currency.cc}</option>)
             }
           </DropdownInput>
           {errors[FIELDS.CURRENCY] && touched[FIELDS.CURRENCY] ? (<div>{errors[FIELDS.CURRENCY]}</div>) : null}
@@ -119,12 +109,12 @@ const SubmitDataForm = () => {
             description={
               <>
                 Select the type of price/value. These are defined as:
-                  <ul>
-                    <li>Statutory price: Set by a regulating government body; applicable to one or multiple individuals and groups; e.g. published in legislation.</li>
-                    <li>Transactional price: Paid in a 1-1 transaction; e.g. published in a contract.</li>
-                    <li>Environmental value: Derived based on the set economic value of an environmental product/common (e.g. fish). This includes compensatory fees determined proactively or after the fact, e.g. payments to community members for impacts to hunting or payments to government after pollution.</li>
-                    <li>Derived value: Derived based on capital costs and profit of a company.</li>
-                  </ul>
+                <ul>
+                  <li>Statutory price: Set by a regulating government body; applicable to one or multiple individuals and groups; e.g. published in legislation.</li>
+                  <li>Transactional price: Paid in a 1-1 transaction; e.g. published in a contract.</li>
+                  <li>Environmental value: Derived based on the set economic value of an environmental product/common (e.g. fish). This includes compensatory fees determined proactively or after the fact, e.g. payments to community members for impacts to hunting or payments to government after pollution.</li>
+                  <li>Derived value: Derived based on capital costs and profit of a company.</li>
+                </ul>
               </>
             }
             required={true}
@@ -146,7 +136,7 @@ const SubmitDataForm = () => {
           >
             <option value=''>Select ...</option>
             {
-              USER_SECTORS.map(sector => <option value={sector.value}>{sector.name}</option>)
+              USER_SECTORS.map(sector => <option key={sector.value} value={sector.value}>{sector.name}</option>)
             }
           </DropdownInput>
           {errors[FIELDS.USER_SECTOR] && touched[FIELDS.USER_SECTOR] ? (<div>{errors[FIELDS.USER_SECTOR]}</div>) : null}
@@ -167,7 +157,7 @@ const SubmitDataForm = () => {
           >
             <option value=''>Select ...</option>
             {
-              COUNTRY_CODES.map(country => <option value={country.let3}>{country.name}</option>)
+              COUNTRY_CODES.map(country => <option key={country.let3} value={country.let3}>{country.name}</option>)
             }
           </DropdownInput>
           {errors[FIELDS.COUNTRY] && touched[FIELDS.COUNTRY] ? (<div>{errors[FIELDS.COUNTRY]}</div>) : null}

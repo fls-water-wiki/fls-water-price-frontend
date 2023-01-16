@@ -4,7 +4,7 @@ import { useField } from 'formik';
 import './SearchInputs.css';
 
 const DropdownInputSearchForm = ({ label, ...props}) => {
-  const [field, meta] = useField(props);
+  const [field] = useField(props);
   
   return (
     <div className='input-container'>

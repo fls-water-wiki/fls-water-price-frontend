@@ -9,6 +9,6 @@ function Add() {
       <SubmitDataForm className='submit-data-form'/>
     </div>
   );
-};
+}
 
 export default Add;
