@@ -8,13 +8,17 @@ import SearchForm from '../components/search-form/SearchForm';
 
 function Search() {
   const [results, setResults] = useState([]);
+  const [searched, setSearched] = useState(false);
 
   return (
     <div className="search-container">
       <div className="main-card">
-        <SearchForm setResults={setResults}/>
+        <SearchForm setResults={setResults} setSearched={setSearched}/>
       </div>
-      <ResultsTable results={results}/>
+
+      {/* displays a table of if results exist, an empty table if no searches have been performed, and "No Results Found" if no results were found in a search */}
+      { results.length > 0 || !searched ? <ResultsTable results={results}/> : <h2>No Results Found</h2>}
+      
     </div>
   );
 }

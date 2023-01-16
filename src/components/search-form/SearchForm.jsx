@@ -22,7 +22,7 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.WATER_TREATMENT]: Yup.string(),
 });
 
-const SearchForm = ({ setResults }) => {
+const SearchForm = ({ setResults, setSearched }) => {
 
   return (
     <div className="search-form-container">
@@ -46,6 +46,7 @@ const SearchForm = ({ setResults }) => {
             });
             const rows = res.data.data.rows;
             setResults(rows);
+            setSearched(true);
           }  catch (err) {
             console.log(err);
           }
