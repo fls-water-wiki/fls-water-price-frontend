@@ -26,7 +26,8 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.DATE]: Yup.number()
     .min(1700, 'The year must be 1700 or later')
     .max(new Date().getFullYear(), 'The year must be the current year or earlier')
-    .integer('Must be an integer (whole number)'),
+    .integer('Must be an integer (whole number)')
+    .required(YUP_REQUIRED),
   [FIELDS.WATER_UNIT]: Yup.string()
     .required(YUP_REQUIRED),
   [FIELDS.PRICE_TYPE]: Yup.string()
@@ -88,7 +89,7 @@ const SubmitDataForm = () => {
           <NumberInput
             header='Year of Price/Value'
             description='Provide the date when this price/value was applicable. Note that this may be different from the date when the data source was published.'
-            required={false}
+            required={true}
             name={FIELDS.DATE}
           />
           {errors[FIELDS.DATE] && touched[FIELDS.DATE] ? (<div>{errors[FIELDS.DATE]}</div>) : null}

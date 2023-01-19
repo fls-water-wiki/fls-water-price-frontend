@@ -21,13 +21,12 @@ function ResultsTable({ results, showModal }) {
     setPageNumber(1);
   };
 
-  // country and source
   return (
     <div className="results-table-container">
 
+      {/* checks if there are any results to be displayed in the current page */}
       {(results.length > 0 && (pageNumber - 1) * tableLength < results.length)
        && 
-
 
           <table className="results-table">
             <tr className="results-table-header-row">
@@ -44,6 +43,7 @@ function ResultsTable({ results, showModal }) {
               }
 
             </tr>
+            {/* obtains the results in the current page and displays them */}
             {
               results.slice(tableLength * (pageNumber - 1), Math.min(tableLength * pageNumber, results.length)).map((result, rowNumber) => {
 
