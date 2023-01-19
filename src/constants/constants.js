@@ -15,17 +15,17 @@ export const TABLE_COLUMNS = {
   WATER_UNIT: 'vp_wtrunit',
   PRICE: 'vp_num',
   CURRENCY: 'curr_code',
-  YEAR: 'year',
+  YEAR: 'vp_date',
   NAT_CODE: 'nat_code',
   SOURCE_TITLE: 'source_title',
 };
 
 export const TABLE_COLUMN_DESCRIPTIONS = {
-  WATER_TREATMENT: 'A description of water processes related to this data point, as described in the original source. Searchable by keyword.',
-  WATER_UNIT: 'Unit of measurement relevant to the data point.',
-  PRICE: 'Numerical value for water cost.',
-  CURRENCY: 'Relevant national currency. Uses ISO 4217 as standard list.',
-  YEAR: 'Year in which the water cost was active.',
-  NAT_CODE: 'The country under whose jurisdiction the water cost falls. Uses ISO 3166 country codes as standard list.',
-  SOURCE_TITLE: 'Information source',
+  [TABLE_COLUMNS.WATER_TREATMENT]: 'A description of water processes related to this data point, as described in the original source. Searchable by keyword.',
+  [TABLE_COLUMNS.WATER_UNIT]: 'Unit of measurement relevant to the data point.',
+  [TABLE_COLUMNS.PRICE]: 'Numerical value for water cost.',
+  [TABLE_COLUMNS.CURRENCY]: 'Relevant national currency. Uses ISO 4217 as standard list.',
+  [TABLE_COLUMNS.YEAR]: 'Year in which the water cost was active.',
+  [TABLE_COLUMNS.NAT_CODE]: 'The country under whose jurisdiction the water cost falls. Uses ISO 3166 country codes as standard list.',
+  [TABLE_COLUMNS.SOURCE_TITLE]: 'Information source',
 };

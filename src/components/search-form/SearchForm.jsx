@@ -22,7 +22,7 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.WATER_TREATMENT]: Yup.string(),
 });
 
-const SearchForm = ({ setResults, setSearched }) => {
+const SearchForm = ({ setResults, setSearched, showModal }) => {
 
   return (
     <div className="search-form-container">
@@ -56,25 +56,25 @@ const SearchForm = ({ setResults, setSearched }) => {
         {({ handleReset}) => (
           <Form className="form">
             <div className='column'>
-              <DropdownInput label='Country' name={FIELDS.COUNTRY}>
+              <DropdownInput label='Country' name={FIELDS.COUNTRY} showModal={showModal}>
                 <option value=''>Select ...</option>
                 {
                   COUNTRY_CODES.map(country => <option key={country.let3} value={country.let3}>{country.name}</option>)
                 }
               </DropdownInput>
               
-              <RegionsInputSearchForm label='Region' name={FIELDS.REGION} regions={REGIONS} />
-              <NumberInput label='Earliest Year' name={FIELDS.EARLIEST_YEAR} />
-              <NumberInput label='Latest Year' name={FIELDS.LATEST_YEAR} />
+              <RegionsInputSearchForm label='Region' name={FIELDS.REGION} regions={REGIONS} showModal={showModal} />
+              <NumberInput label='Earliest Year' name={FIELDS.EARLIEST_YEAR} showModal={showModal} />
+              <NumberInput label='Latest Year' name={FIELDS.LATEST_YEAR} showModal={showModal} />
 
-              <DropdownInput label='User Sector' name={FIELDS.USER_SECTOR}>
+              <DropdownInput label='User Sector' name={FIELDS.USER_SECTOR} showModal={showModal}>
                 <option value=''>Select ...</option>
                 {
                   USER_SECTORS.map(sector => <option key={sector.value} value={sector.value}>{sector.name}</option>)
                 }
               </DropdownInput>
 
-              <TextInput label='Water Treatment' name={FIELDS.WATER_TREATMENT} />
+              <TextInput label='Water Treatment' name={FIELDS.WATER_TREATMENT} showModal={showModal} />
             </div>
             <div>
               <button type="submit" className="btn">Submit</button>

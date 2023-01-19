@@ -2,13 +2,14 @@ import React from 'react';
 import { useField } from 'formik';
 
 import './SearchInputs.css';
+import { SEARCH_FORM_FIELD_DESCRIPTIONS } from '../../../constants/form_constants';
 
-const DropdownInputSearchForm = ({ label, ...props}) => {
+const DropdownInputSearchForm = ({ label, showModal, ...props}) => {
   const [field] = useField(props);
   
   return (
     <div className='input-container'>
-      <label className='label' htmlFor={props.id || props.name}>
+      <label className='label' htmlFor={props.id || props.name} onClick={() => showModal(label, SEARCH_FORM_FIELD_DESCRIPTIONS[props.name])}>
         {label}:
       </label>
       <select className='input' {...field} {...props} />

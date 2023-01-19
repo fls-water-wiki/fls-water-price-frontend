@@ -393,13 +393,13 @@ export const SEARCH_FORM_FIELD_DESCRIPTIONS = {
   [SEARCH_FORM_FIELDS.COUNTRY]: 'Will search for data listed with this country. Uses ISO 3166 country codes as standard list.',
   [SEARCH_FORM_FIELDS.REGION]: 
     <p>Will search for data only from the selected region (regions only appear when a country is selected). From 
-      <a href="https://www.naturalearthdata.com/">Natural Earth dataset</a>.
+      <a href="https://www.naturalearthdata.com/"> Natural Earth dataset</a>.
     </p>,
   [SEARCH_FORM_FIELDS.EARLIEST_YEAR]: 'Will search for data with years during and after this year.',
   [SEARCH_FORM_FIELDS.LATEST_YEAR]: 'Will search for data with years during and before this year.',
   [SEARCH_FORM_FIELDS.USER_SECTOR]: 
     <p>Will search for data from the selected water use sector. Uses top-level 
-      <a href="https://www.census.gov/naics/">North American Industry Classification System</a>
+      <a href="https://www.census.gov/naics/"> North American Industry Classification System </a>
       as standard list.
     </p>,
   [SEARCH_FORM_FIELDS.WATER_TREATMENT]: 'Will search for water treatment processes by keyword.'

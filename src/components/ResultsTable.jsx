@@ -5,14 +5,12 @@ import './ResultsTable.css';
 import { Pagination } from '@mui/material';
 import { CSVLink } from 'react-csv';
 
-import { csvHeaders } from '../constants/constants';
+import { csvHeaders, TABLE_COLUMN_DESCRIPTIONS } from '../constants/constants';
 
-function ResultsTable({ results }) {
+function ResultsTable({ results, showModal }) {
 
   const [pageNumber, setPageNumber] = useState(1);
   const [tableLength, setTableLength] = useState(10);
-  const [sortAscending, setSortAscending] = useState(false);
-  const [sortColumn, setSortColumn] = useState('');
 
   const handlePageNumberChange = (e, value) => {
     setPageNumber(value);
@@ -23,26 +21,9 @@ function ResultsTable({ results }) {
     setPageNumber(1);
   };
 
-  const sortBy = (column) => {
-    if (column === sortColumn) {
-      setSortAscending(!sortAscending);
-    } else {
-      setSortAscending(true);
-    }
-
-    setSortColumn(column);
-
-    if (sortAscending) {
-      results.sort((a, b) => a[column] - b[column]);
-    } else {
-      results.sort((a, b) => b[column] - a[column]);
-    }
-  };
-
   // country and source
   return (
     <div className="results-table-container">
-
 
       {(results.length > 0 && (pageNumber - 1) * tableLength < results.length)
        && 
@@ -52,7 +33,13 @@ function ResultsTable({ results }) {
             <tr className="results-table-header-row">
               {
                 csvHeaders.map(header =>
-                  <th className="results-table-header-item" key={header.key} onClick={() => sortBy(header.key)}>{header.label}</th>
+                  <th className="results-table-header-item" key={header.key} 
+                    onClick={() => 
+                      showModal(header.label, TABLE_COLUMN_DESCRIPTIONS[header.key])
+                    }
+                  >
+                    {header.label}
+                  </th>
                 )
               }
 
