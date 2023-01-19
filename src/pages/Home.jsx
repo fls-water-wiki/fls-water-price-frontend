@@ -17,7 +17,7 @@ function Home() {
         </p>
 
         <h2>
-          hat do we mean by “water cost”?
+          What do we mean by “water cost”?
         </h2>
 
         We mean all the different ways that water can be decribed, bought, or sold using money. There are four broad categories of water costs that we collect in the water wiki:
