@@ -45,7 +45,8 @@ const SubmissionSchema = Yup.object().shape({
   [FIELDS.SOURCE_DATE]: Yup.number()
     .min(1700, 'The year must be 1700 or later')
     .max(new Date().getFullYear(), 'The year must be the current year or earlier')
-    .integer('Must be an integer (whole number)'),
+    .integer('Must be an integer (whole number)')
+    .nullable(),
   [FIELDS.SOURCE_AUTHORS]: Yup.string(),
 });
 
